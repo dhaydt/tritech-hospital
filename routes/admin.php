@@ -4,11 +4,7 @@ use App\Http\Controllers\admin\auth\AdminController;
 use App\Http\Controllers\admin\auth\LoginAdminController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\BussinessSettingsController;
-use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\CouponController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\OrderController;
-use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SystemController;
@@ -31,6 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
         Route::get('/user_admin', [UserController::class, 'index'])->name('userAdmin');
         Route::post('/add_admin', [AdminController::class, 'index'])->name('userAdminAdd');
+        Route::post('/add_customer', [AdminController::class, 'addCustomer'])->name('addCustomer');
 
         // System Route
         Route::get('maintenance-mode', [SystemController::class, 'maintenance_mode'])->name('maintenance-mode');
@@ -85,49 +82,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/status', [BannerController::class, 'status'])->name('status');
             Route::post('/edit', [BannerController::class, 'edit'])->name('edit');
             Route::post('/update', [BannerController::class, 'update'])->name('update');
-        });
-
-        // payment
-        Route::prefix('payment')->name('payment.')->group(function () {
-            Route::get('/', [PaymentController::class, 'index'])->name('index');
-            Route::post('/payment-status', [PaymentController::class, 'status'])->name('status');
-        });
-
-        // Coupon
-        Route::prefix('coupon')->name('coupon.')->group(function () {
-            Route::get('add-new', [CouponController::class, 'add_new'])->name('add-new');
-            Route::post('add-new', [CouponController::class, 'store']);
-            Route::get('update/{id}', [CouponController::class, 'edit'])->name('update');
-            Route::post('update/{id}', [CouponController::class, 'update']);
-            Route::get('status/{id}/{status}', [CouponController::class, 'status'])->name('status');
-        });
-
-        // Category
-        Route::prefix('category')->name('category.')->group(function () {
-            Route::get('view', [CategoryController::class, 'index'])->name('view');
-            Route::get('fetch', [CategoryController::class, 'fetch'])->name('fetch');
-            Route::post('store', [CategoryController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit');
-            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update');
-            Route::post('delete', [CategoryController::class, 'delete'])->name('delete');
-            Route::get('status/{id}/{home_status}', [CategoryController::class, 'status'])->name('status');
-        });
-
-        Route::prefix('order')->name('order.')->group(function () {
-            Route::get('manual', [OrderController::class, 'index'])->name('manual');
-            Route::post('add', [OrderController::class, 'addToCart'])->name('add');
-            Route::post('nav-cart-items', [OrderController::class, 'updateNavCart'])->name('nav-cart');
-            Route::post('remove', [OrderController::class, 'removeFromCart'])->name('remove');
-            Route::get('shop-cart', [OrderController::class, 'shop_cart'])->name('shop-cart');
-            Route::post('updateQuantity', [OrderController::class, 'updateQuantity'])->name('updateQuantity');
-            Route::post('checkout-detail', [OrderController::class, 'checkout_detail'])->name('checkout-detail');
-            Route::post('checkout-payment', [OrderController::class, 'checkout_payment'])->name('checkout-payment');
-            Route::get('checkout-complete', [OrderController::class, 'checkout_complete'])->name('checkout-complete');
-            Route::get('list/{status}', [OrderController::class, 'list'])->name('list');
-            Route::get('listOrder/{status}', [OrderController::class, 'listOrder'])->name('listOrder');
-
-            // Service
-            Route::get('manualService', [OrderController::class, 'indexService'])->name('manualService');
         });
     });
 });

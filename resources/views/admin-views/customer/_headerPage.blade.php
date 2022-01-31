@@ -18,7 +18,7 @@
                     {{-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> --}}
                     <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
                         aria-hidden="true">
-                        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
 
                                 <div class="modal-body p-0">
@@ -27,22 +27,20 @@
                                             <div class="text-center text-muted mb-4">
                                                 <small>Add Pasien</small>
                                             </div>
-                                            <form class="js-validate" role="form" method="POST" action="{{route('admin.userAdminAdd')}}">
+                                            <form class="js-validate" role="form" method="POST" action="{{route('admin.addCustomer')}}">
                                                 @csrf
                                                 <div class="form-group mb-3">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="ni ni-single-02"></i></span>
+                                                            <span class="input-group-text w-100 bg-grey text-white capitalize">Full name</span>
                                                         </div>
-                                                        <input class="pl-2 form-control" name="name" placeholder="Name" type="text">
+                                                        <input class="pl-2 form-control" name="name" placeholder="Full Name" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="ni ni-mobile-button"></i></span>
+                                                            <span class="input-group-text w-100 bg-grey text-white">Phone</span>
                                                         </div>
                                                         <input class="pl-2 form-control" name="phone" placeholder="Phone" type="number">
                                                     </div>
@@ -50,34 +48,22 @@
                                                 <div class="form-group mb-3">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="ni ni-email-83"></i></span>
+                                                            <span class="input-group-text w-100 bg-grey text-white">Birth Date</span>
                                                         </div>
-                                                        <input class="pl-2 form-control" name="email" placeholder="Email" type="email">
+                                                        <input class="pl-2 form-control" name="birthdate" placeholder="Birthdate" type="date">
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-3">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="ni ni-lock-circle-open"></i></span>
+                                                            <span class="input-group-text w-100 bg-grey text-white">Address</span>
                                                         </div>
-                                                        <input class="pl-2 form-control" name="password" placeholder="Password"
-                                                            type="password">
+                                                        <textarea class="pl-2 form-control" name="address" placeholder="Address"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="input-group input-group-merge input-group-alternative">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i
-                                                                    class="ni ni-lock-circle-open"></i></span>
-                                                        </div>
-                                                        <input class="pl-2 form-control" name="c_password" placeholder="Confirm Password"
-                                                            type="password">
-                                                    </div>
-                                                </div>
+
                                                 <div class="text-center">
-                                                    <button type="submit" class="btn btn-primary my-4">Add Admin</button>
+                                                    <button type="submit" class="btn btn-primary my-4">Add Pasien</button>
                                                 </div>
                                             </form>
                                         </div>
