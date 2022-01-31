@@ -43,57 +43,47 @@
                     <table class="table align-items-center table-flush" >
                         <thead class="thead-light">
                             <tr class="text-center">
+                                <th scope="col" class="sort" data-sort="name">NO</th>
                                 <th scope="col" class="sort" data-sort="name">ID</th>
                                 <th scope="col" class="sort" data-sort="budget">Name</th>
-                                <th scope="col" class="sort" data-sort="status">Email</th>
                                 <th scope="col" class="sort" data-sort="status">Phone</th>
                                 <th scope="col" class="sort" data-sort="status">Address</th>
-                                <th scope="col">Profile Image</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="list">
                             @if (count($admin) > 0)
+                            <?php $no = 1;?>
                                 @foreach ($admin as $ad)
                                 <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
                                     <th scope="row">
                                         <div class="media align-items-center">
-                                            {{-- <a href="#" class="avatar rounded-circle mr-3">
-                                                <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                                            </a> --}}
                                             <div class="media-body text-center">
                                                 <span class="name mb-0 text-sm">{{ $ad['id'] }}</span>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="budget text-center">
+                                    <td class="budget text-center capitalize">
                                         {{ $ad['name'] }}
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge badge-dot mr-4">
-                                            {{-- <i class="bg-warning"></i> --}}
-                                            <span class="status">{{ $ad['email'] }}</span>
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="badge badge-dot mr-4">
-                                            {{-- <i class="bg-warning"></i> --}}
                                             <span class="status">{{ $ad['phone'] }}</span>
-                                        </span>
                                     </td>
-                                    <td class="text-center">
-                                        <div class="avatar-group">
-                                            <a href="javascript:" class="avatar avatar-sm rounded-circle" data-toggle="tooltip"
-                                                data-original-title="Ryan Tompson">
-                                                <img alt="Image placeholder" src="{{ asset('storage/profile/'.$ad['image']) }}">
-                                            </a>
-                                        </div>
+                                    <td class="budget text-center capitalize">
+                                        {{ $ad['address'] }}
                                     </td>
                                     <td>
-                                        <div class="d-flex align-items-center justify-content-center">
+                                        <div class="d-flex align-items-center justify-content-evenly">
                                             <a href="{{ route('admin.userCustomerView', ['id' => $ad['id']]) }}" class="viewUser">
                                                 <i class="far fa-eye"></i>
+                                            </a>
+                                            <a href="javascript:" class="viewUser">
+                                                <i class="far fa-edit text-success"></i>
+                                            </a>
+                                            <a href="javascript:" class="viewUser">
+                                                <i class="fas fa-trash text-danger"></i>
                                             </a>
                                         </div>
                                     </td>
