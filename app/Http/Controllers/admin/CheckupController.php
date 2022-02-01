@@ -50,4 +50,24 @@ class CheckupController extends Controller
 
         return back();
     }
+
+    public function update(Request $request)
+    {
+        $pasien = Checkup::where('id', $request->id)->first();
+        $pasien->kembali = $request->kembali;
+        $pasien->save();
+        Toastr::success('Data kembali berhasil ditambahkan');
+
+        return back();
+    }
+
+    public function delete($id)
+    {
+        // dd($id);
+        $pasien = Checkup::where('id', $id)->first();
+        $pasien->delete();
+        Toastr::success('Data checkup berhasil dihapus');
+
+        return back();
+    }
 }
