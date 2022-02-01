@@ -98,7 +98,15 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.checkup.list') }}">
-                        <i class="ni ni-check-bold text-primary"></i> {{ __('Checkup') }}
+                        <i class="ni ni-check-bold text-orange"></i> {{ __('Checkup') }}
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.content.list') }}">
+                        <i class="fas fa-newspaper text-primary"></i> {{ __('Content') }}
                     </a>
                 </li>
             </ul>

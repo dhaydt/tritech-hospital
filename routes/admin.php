@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\auth\LoginAdminController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\BussinessSettingsController;
 use App\Http\Controllers\admin\CheckupController;
+use App\Http\Controllers\admin\ContentController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ServiceController;
@@ -38,6 +39,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/status', [CheckupController::class, 'status'])->name('status');
             Route::post('/edit', [CheckupController::class, 'edit'])->name('edit');
             Route::post('/update', [CheckupController::class, 'update'])->name('update');
+        });
+
+        // Content
+        Route::prefix('content')->name('content.')->group(function () {
+            Route::get('/list', [ContentController::class, 'index'])->name('list');
+            Route::get('/add-new', [ContentController::class, 'add'])->name('addNew');
+            Route::post('/store', [ContentController::class, 'store'])->name('store');
+            Route::get('/delete/{id}', [ContentController::class, 'delete'])->name('delete');
+            Route::post('/status', [ContentController::class, 'status'])->name('status');
+            Route::post('/edit', [ContentController::class, 'edit'])->name('edit');
+            Route::post('/update', [ContentController::class, 'update'])->name('update');
         });
 
         // System Route
