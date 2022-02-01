@@ -95,6 +95,14 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.checkup.list') }}">
+                        <i class="ni ni-check-bold text-primary"></i> {{ __('Checkup') }}
+                    </a>
+                </li>
+            </ul>
+
             <!-- User Section -->
             <h6 class="navbar-heading text-muted">User Section</h6>
             <!-- Navigation -->

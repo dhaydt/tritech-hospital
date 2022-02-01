@@ -17,6 +17,8 @@ class CreateCheckupsTable extends Migration
             $table->id();
             $table->bigInteger('pasien_id')->nullable();
             $table->text('keluhan')->nullable();
+            $table->date('datang')->nullable();
+            $table->date('kembali')->nullable();
             $table->timestamps();
         });
     }

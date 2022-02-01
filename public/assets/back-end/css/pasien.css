@@ -10,6 +10,10 @@
     text-transform: uppercase;
 }
 
+.table-responsive{
+    overflow-y: hidden;
+}
+
 /* add pasien */
 .pasien-form .input-group-prepend{
     width: 100px;

@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\auth\AdminController;
 use App\Http\Controllers\admin\auth\LoginAdminController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\BussinessSettingsController;
+use App\Http\Controllers\admin\CheckupController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ServiceController;
@@ -28,6 +29,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/user_admin', [UserController::class, 'index'])->name('userAdmin');
         Route::post('/add_admin', [AdminController::class, 'index'])->name('userAdminAdd');
         Route::post('/add_customer', [AdminController::class, 'addCustomer'])->name('addCustomer');
+
+        // Checkup
+        Route::prefix('checkup')->name('checkup.')->group(function () {
+            Route::get('/list', [CheckupController::class, 'index'])->name('list');
+            Route::post('/store', [CheckupController::class, 'store'])->name('store');
+            Route::post('/delete', [CheckupController::class, 'delete'])->name('delete');
+            Route::post('/status', [CheckupController::class, 'status'])->name('status');
+            Route::post('/edit', [CheckupController::class, 'edit'])->name('edit');
+            Route::post('/update', [CheckupController::class, 'update'])->name('update');
+        });
 
         // System Route
         Route::get('maintenance-mode', [SystemController::class, 'maintenance_mode'])->name('maintenance-mode');

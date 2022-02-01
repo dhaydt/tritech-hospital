@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
-@section('title', 'Pasien List')
+@section('title', 'Pasien Checkup')
 @section('content')
-@include('admin-views.customer._headerPage')
+@include('admin-views.checkup._headerPage')
 <style>
     .viewUser {
         font-size: 22px;
@@ -44,12 +44,12 @@
                         <thead class="thead-light">
                             <tr class="text-center">
                                 <th scope="col" class="sort" data-sort="name">NO</th>
-                                <th scope="col" class="sort" data-sort="name">ID</th>
-                                <th scope="col" class="sort" data-sort="budget">Name</th>
-                                <th scope="col" class="sort" data-sort="status">Phone</th>
-                                <th scope="col" class="sort" data-sort="status">Address</th>
+                                <th scope="col" class="sort" data-sort="budget">Nama</th>
+                                <th scope="col" class="sort" data-sort="status">Telepon / HP</th>
+                                <th scope="col" class="sort" data-sort="status">Datang</th>
+                                <th scope="col" class="sort" data-sort="status">Kembali</th>
+                                <th scope="col" class="sort" data-sort="status">Alamat</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
-                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="list">
