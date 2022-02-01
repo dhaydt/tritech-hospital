@@ -1,0 +1,21 @@
+/* Global */
+
+.bg-grey{
+    background-color: #afb7bf;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+
+/* add pasien */
+.pasien-form .input-group-prepend{
+    width: 100px;
+}
+
+.pasien-form.focused .input-group-prepend span {
+    background-color: #afb7bf;
+    font-weight: 700;
+}

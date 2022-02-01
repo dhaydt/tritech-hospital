@@ -25,11 +25,11 @@
                                     <div class="card bg-secondary border-0 mb-0">
                                         <div class="card-body px-lg-5 py-lg-5">
                                             <div class="text-center text-muted mb-4">
-                                                <small>Add Pasien</small>
+                                                <h4 class="uppercase">Add Pasien</h4>
                                             </div>
                                             <form class="js-validate" role="form" method="POST" action="{{route('admin.addCustomer')}}">
                                                 @csrf
-                                                <div class="form-group mb-3">
+                                                <div class="form-group mb-3 pasien-form">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text w-100 bg-grey text-white capitalize">Full name</span>
@@ -37,7 +37,7 @@
                                                         <input class="pl-2 form-control" name="name" placeholder="Full Name" type="text">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3">
+                                                <div class="form-group mb-3 pasien-form">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text w-100 bg-grey text-white">Phone</span>
@@ -45,7 +45,7 @@
                                                         <input class="pl-2 form-control" name="phone" placeholder="Phone" type="number">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3">
+                                                <div class="form-group mb-3 pasien-form">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text w-100 bg-grey text-white">Birth Date</span>
@@ -53,7 +53,7 @@
                                                         <input class="pl-2 form-control" name="birthdate" placeholder="Birthdate" type="date">
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3">
+                                                <div class="form-group mb-3 pasien-form">
                                                     <div class="input-group input-group-merge input-group-alternative">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text w-100 bg-grey text-white">Address</span>

@@ -75,7 +75,7 @@
                                         {{ $ad['address'] }}
                                     </td>
                                     <td>
-                                        <div class="d-flex align-items-center justify-content-evenly">
+                                        <div class="d-flex align-items-center justify-content-evenly action-col">
                                             <a href="{{ route('admin.userCustomerView', ['id' => $ad['id']]) }}" class="viewUser">
                                                 <i class="far fa-eye"></i>
                                             </a>

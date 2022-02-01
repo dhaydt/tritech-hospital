@@ -26,19 +26,10 @@
 
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets') }}/back-end/css/pasien.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <style>
-        .bg-grey{
-            background-color: #afb7bf;
-        }
-        .capitalize {
-            text-transform: capitalize;
-        }
-        .input-group-prepend{
-            width: 100px;
-            height: 46px;
-        }
         .main-content .header.bg-primary {
             background-color: {{$web_config['primary_color']}} !important;
         }
@@ -67,6 +58,10 @@
 
         td span {
             color: grey;
+        }
+
+        .action-col a{
+            font-size: 14px;
         }
 
         .legend-indicator {
