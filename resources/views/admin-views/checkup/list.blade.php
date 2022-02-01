@@ -27,6 +27,10 @@
     .card-footer > div > div > div > nav > div.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between > div:nth-child(2) > span > a:first-child svg{
 
     }
+    .status.badge{
+        font-size: 85%;
+        border-radius: 20px;
+    }
 
 </style>
 <div class="container-fluid mt--8">
@@ -38,7 +42,6 @@
                     <h3 class="mb-0">Admin table</h3>
                 </div> --}}
                 <!-- Light table -->
-                {{-- {{ var_dump($admin) }} --}}
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush" >
                         <thead class="thead-light">
@@ -55,24 +58,29 @@
                         <tbody class="list">
                             @if (count($admin) > 0)
                             <?php $no = 1;?>
-                                @foreach ($admin as $ad)
+                            @foreach ($admin as $ad)
+                            {{-- {{ dd($ad) }} --}}
                                 <tr>
                                     <td class="text-center">{{ $no++ }}</td>
-                                    <th scope="row">
-                                        <div class="media align-items-center">
-                                            <div class="media-body text-center">
-                                                <span class="name mb-0 text-sm">{{ $ad['id'] }}</span>
-                                            </div>
-                                        </div>
-                                    </th>
                                     <td class="budget text-center capitalize">
-                                        {{ $ad['name'] }}
-                                    </td>
-                                    <td class="text-center">
-                                            <span class="status">{{ $ad['phone'] }}</span>
+                                        <span class="status">{{ $ad->customer->name }}</span>
                                     </td>
                                     <td class="budget text-center capitalize">
-                                        {{ $ad['address'] }}
+                                        <span class="status">{{ $ad->customer->phone }}</span>
+                                    </td>
+                                    <td class="budget text-center capitalize">
+                                        <span class="status badge badge-success">{{ date('d M Y',strtotime($ad->datang)) }}</span>
+                                    </td>
+                                    <td class="budget text-center capitalize">
+                                        @if ($ad->kembali == null)
+                                        <span class="status badge badge-danger">Belum di atur</span>
+
+                                        @else
+                                        <span class="status badge badge-success">{{ date('d M Y',strtotime($ad->kembali)) }}</span>
+                                        @endif
+                                    </td>
+                                    <td class="budget text-center capitalize">
+                                        <span class="status">{{ $ad->customer->address }}</span>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-evenly action-col">

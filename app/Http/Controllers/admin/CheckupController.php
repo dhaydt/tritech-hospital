@@ -28,15 +28,11 @@ class CheckupController extends Controller
             });
             $query_param = ['search' => $request['search']];
         } else {
-            $admin = Checkup::get();
+            $admin = Checkup::with(['customer']);
         }
 
         session()->put('title', 'Checkup List');
-        if (count($admin) > 0) {
-            $admin = $admin->last()->paginate(Helpers::pagination_limit())->appends($query_param);
-
-            return view('admin-views.checkup.list', compact('admin', 'search', 'pasien'));
-        }
+        $admin = $admin->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
 
         return view('admin-views.checkup.list', compact('admin', 'search', 'pasien'));
     }
