@@ -13,7 +13,7 @@
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="javascript:">User Section</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.userCustomer') }}">Customers</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.userCustomer') }}">Pasien</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $user->name }}</li>
                         </ol>
                     </nav>

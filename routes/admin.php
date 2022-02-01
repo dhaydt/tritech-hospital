@@ -50,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('user_customer', [UserController::class, 'customerList'])->name('userCustomer');
         Route::get('user_customer/{id}', [UserController::class, 'customerView'])->name('userCustomerView');
+        Route::get('user_del/{id}', [UserController::class, 'delete'])->name('userCustomerDel');
 
         // Product
         Route::get('product_list', [ProductController::class, 'index'])->name('listProduct');

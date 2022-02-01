@@ -79,10 +79,10 @@
                                             <a href="{{ route('admin.userCustomerView', ['id' => $ad['id']]) }}" class="viewUser">
                                                 <i class="far fa-eye"></i>
                                             </a>
-                                            <a href="javascript:" class="viewUser">
+                                            {{-- <a href="javascript:" class="viewUser">
                                                 <i class="far fa-edit text-success"></i>
-                                            </a>
-                                            <a href="javascript:" class="viewUser">
+                                            </a> --}}
+                                            <a href="{{ route('admin.userCustomerDel', ['id' => $ad['id']]) }}" class="viewUser">
                                                 <i class="fas fa-trash text-danger"></i>
                                             </a>
                                         </div>

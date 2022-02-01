@@ -138,7 +138,17 @@ class UserController extends Controller
     {
         // dd($id);
         $user = Customer::where('id', $id)->first();
+        session()->put('title', 'Pasien Details');
 
         return view('admin-views.customer.view.view', compact('user'));
+    }
+
+    public function delete($id)
+    {
+        $user = Customer::where('id', $id)->first();
+        $user->delete();
+        Toastr::success('Pasien sukses dihapus');
+
+        return redirect()->back();
     }
 }

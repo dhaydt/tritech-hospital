@@ -55,10 +55,10 @@ projects or assigned tasks'),
 
                         <div class="pl-lg-4">
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
+                                <label class="form-control-label" for="input-name">{{ __('Nama') }}</label>
                                 <input type="text" readonly name="name" id="input-name"
                                     class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Name') }}"
+                                    placeholder="{{ __('Nama') }}"
                                     value="{{ old('name', $user->name) }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -69,7 +69,7 @@ projects or assigned tasks'),
                             </div>
 
                             <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-phonr">{{ __('Phone') }}</label>
+                                <label class="form-control-label" for="input-phonr">{{ __('No Hp') }}</label>
                                 <input type="number" readonly name="phone" id="input-phone"
                                     class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                     placeholder="{{ __('Phone') }}"
@@ -81,16 +81,16 @@ projects or assigned tasks'),
                                 </span>
                                 @endif
                             </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
+                            <div class="form-group{{ $errors->has('address') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-address">{{ __('Alamat') }}</label>
                                 <input type="email" readonly name="email" id="input-email"
-                                    class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Email') }}"
-                                    value="{{ old('email', $user->email) }}" required>
+                                    class="form-control form-control-alternative{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                    placeholder="{{ __('address') }}"
+                                    value="{{ old('address', $user->address) }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('address') }}</strong>
                                 </span>
                                 @endif
                             </div>
