@@ -22,29 +22,30 @@ class LoginController extends Controller
 
     public function submit(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'email' => 'required',
-            'password' => 'required|min:8',
+            'phone' => 'required',
+            'password' => 'required|min:4',
         ]);
 
         $remember = ($request['remember']) ? true : false;
-        $user = Customer::where('email', $request->email)->first();
+        $user = Customer::where('phone', $request->phone)->first();
 
+        // dd($user);
         if (isset($user) == false) {
-            Toastr::error('Email belum terdaftar');
+            Toastr::error('No HP belum terdaftar');
 
             return back()->withInput();
         }
-        // dd($user, bcrypt($request->password));
 
-        if (isset($user) && $user->is_active && auth('customer')->attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
-            Toastr::info('Welcome  '.$user->name.'to '.env('APP_NAME', 'Backend').' !');
+        if (isset($user) && auth('customer')->attempt(['phone' => $request->phone, 'password' => $request->password], $remember)) {
+            Toastr::info('Welcome  '.$user->name.' to '.env('APP_NAME').' !');
 
             return view('welcome');
         }
         // dd($user);
 
-        Toastr::error('Password atau email salah');
+        Toastr::error('Password atau no HP salah');
 
         return back()->withInput();
     }

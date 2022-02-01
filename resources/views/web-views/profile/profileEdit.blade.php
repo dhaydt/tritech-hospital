@@ -53,20 +53,13 @@
                                             <input type="text" class="form-control" id="name" name="name"
                                                 value="{{$customer['name']}}" required>
                                         </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputEmail4">Email </label>
-                                                <input type="email" class="form-control" type="email" id="account-email"
-                                                    value="{{$customer['email']}}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="phone">Phone Number </label>
-                                                {{-- <small class="text-primary">(
-                                                    * {{('country_code_is_must')}} {{('like_for_BD_880')}}
-                                                    )</small></label> --}}
-                                                <input type="number" class="form-control" type="text" id="phone"
-                                                    name="phone" value="{{$customer['phone']}}" required>
-                                            </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="phone">Phone Number </label>
+                                            {{-- <small class="text-primary">(
+                                                * {{('country_code_is_must')}} {{('like_for_BD_880')}}
+                                                )</small></label> --}}
+                                            <input type="number" class="form-control" type="text" id="phone"
+                                                name="phone" value="{{$customer['phone']}}" required>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

@@ -8,34 +8,24 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
-                        <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
-                        <div class="btn-wrapper text-center">
-                            <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/github.svg"></span>
-                                <span class="btn-inner--text">{{ __('Github') }}</span>
-                            </a>
-                            <a href="#" class="btn btn-neutral btn-icon">
-                                <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
-                                <span class="btn-inner--text">{{ __('Google') }}</span>
-                            </a>
-                        </div>
+                        <div class="text-muted text-center mt-2 mb-2"><h4>{{ __('Input Your ID for login') }}</h4></div>
                     </div>
                     <div class="card-body px-lg-5">
                         <form class="js-validate" role="form" method="POST" action="{{ route('customersLogin_submit') }}">
                             @csrf
 
-                            <div class="js-form-message form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                            <div class="js-form-message form-group{{ $errors->has('phone') ? ' has-danger' : '' }} mb-3">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                    placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}"
-                                    id="signinSrEmail" required data-msg="Please enter a valid email address.">
+                                    <input class="pl-2 form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                                    placeholder="{{ __('Phone') }}" type="number" name="phone" value="{{ old('phone') }}"
+                                    id="signinSrPhone" required data-msg="Please enter a valid phone number.">
                                 </div>
-                                @if ($errors->has('email'))
+                                @if ($errors->has('phone'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -45,7 +35,7 @@
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
                                     <input id="signupSrPassword"
-                                    class="js-toggle-password form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    class="pl-2 js-toggle-password form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                     name="password" placeholder="{{ __('Password') }}" type="password" required
                                     data-hs-toggle-password-options='{
                                     "target": "#changePassTarget",
@@ -77,7 +67,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="row mt-3">
+                {{-- <div class="row mt-3">
                     <div class="col-6">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-light">
@@ -90,7 +80,7 @@
                             <small>{{ __('Create new account') }}</small>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

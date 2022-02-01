@@ -44,7 +44,8 @@ class AdminController extends Controller
         // dd($request);
         $numb = strval((int) $request['phone']);
         $admin = Customer::where('phone', $request->phone)->first();
-        if (isset($admin)) {
+        // dd(isset($admin));
+        if (isset($admin) == true) {
             Toastr::warning('Phone already exist');
 
             return redirect()->back();
@@ -60,7 +61,7 @@ class AdminController extends Controller
 
         $admin = Customer::create([
             'name' => $request['name'],
-            'phone' => $numb,
+            'phone' => $request->phone,
             'image' => 'profile.png',
             'birth_date' => $request['birthdate'],
             'address' => $request['address'],

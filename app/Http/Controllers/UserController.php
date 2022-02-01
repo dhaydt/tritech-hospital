@@ -53,7 +53,7 @@ class UserController extends Controller
         $userDetails = [
              'name' => $request->name,
              'phone' => $request->phone,
-             'password' => strlen($request->password) > 5 ? bcrypt($request->password) : auth('customer')->user()->password,
+             'password' => strlen($request->password) > 3 ? bcrypt($request->password) : auth('customer')->user()->password,
          ];
         if (auth('customer')->check()) {
             Customer::where(['id' => auth('customer')->id()])->update($userDetails);

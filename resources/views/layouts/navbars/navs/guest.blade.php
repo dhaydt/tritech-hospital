@@ -1,6 +1,6 @@
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="/">
             <img src="{{ asset('storage/company/'.$web_config['web_logo']->value) }}" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main"
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                @if (auth('customer')->id() != null)
+                @if (auth('customer')->id() !== null)
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('payment.index') }}">
                         <i class="fas fa-money-bill-wave-alt"></i>
@@ -62,15 +62,9 @@
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('customersReg') }}">
-                        <i class="ni ni-circle-08"></i>
-                        <span class="nav-link-inner--text">{{ __('Register Customer') }}</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('customersLogin') }}">
                         <i class="ni ni-key-25"></i>
-                        <span class="nav-link-inner--text">{{ __('Login Customer') }}</span>
+                        <span class="nav-link-inner--text">{{ __('Login Pasien') }}</span>
                     </a>
                 </li>
                 @endif
