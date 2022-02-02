@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Content;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ContentController extends Controller
 {
@@ -45,14 +44,13 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        // dd($request);
+        $request->validate([
             'title' => 'required',
-            'image' => 'required',
             'desc' => 'required',
         ], [
-            'image.required' => 'Konten images is required!',
-            'title.required' => 'Title is required!',
-            'desc.required' => 'Description  is required!',
+            'title.required' => 'Title Content is required!',
+            'desc.required' => 'Description Content is required!',
         ]);
         $checkup = new Content();
 
@@ -61,13 +59,14 @@ class ContentController extends Controller
         $checkup->image = ImageManager::upload('content/', 'png', $request->file('image'));
 
         $checkup->save();
-        Toastr::success('Pasien berhasil di daftarkan');
+        Toastr::success('Konten berhasil ditambahkan');
 
         return back();
     }
 
     public function update(Request $request)
     {
+        // dd($request);
         $pasien = Content::where('id', $request->id)->first();
         $pasien->title = $request->title;
         $pasien->description = $request->desc;
@@ -75,7 +74,7 @@ class ContentController extends Controller
             $pasien->image = ImageManager::update('content/', $pasien->image, 'png', $request->file('image'));
         }
         $pasien->save();
-        Toastr::success('Data kembali berhasil ditambahkan');
+        Toastr::success('Data konten berhasil diupdate');
 
         return back();
     }
@@ -86,7 +85,7 @@ class ContentController extends Controller
         $pasien = Content::where('id', $id)->first();
         ImageManager::delete('/content/'.$pasien->image);
         $pasien->delete();
-        Toastr::success('Data checkup berhasil dihapus');
+        Toastr::success('Konten berhasil dihapus');
 
         return back();
     }

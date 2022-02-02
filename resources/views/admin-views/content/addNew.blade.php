@@ -2,20 +2,48 @@
 @section('title', 'Konten')
 @section('content')
 @include('admin-views.content.partials._headerPage')
+<style>
+    #changeImg {
+        position: absolute;
+        opacity: 0;
+    }
+    #imgPict{
+        height: 180px;
+        width: 180px;
+        background-color: #fff;
+    }
+</style>
 <div class="container mt--8">
     <div class="row">
         <div class="col">
             <div class="card p-3">
                 <div class="card-title">Add New Content</div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('admin.content.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" name="title">
                         </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">
+                        <div class="mb-3 d-flex">
+                            <div class="col-md-6 pl-0">
+                                <div class="custom-file" style="text-align: left">
+                                    <input type="file" name="image" id="fbimageFileUploader"
+                                           class="custom-file-input"
+                                           accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                    <label class="custom-file-label"
+                                           for="fbimageFileUploader">Add Image</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <center>
+                                    <img
+                                        style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;"
+                                        id="fbImageviewer"
+                                        src="{{asset('assets\back-end\img\400x400\img2.jpg')}}"
+                                        alt="banner image"/>
+                                </center>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="desc" class="form-label">Description</label>
@@ -31,3 +59,22 @@
     </div>
 </div>
 @endsection
+@push('script')
+    <script>
+        $("#fbimageFileUploader").change(function () {
+            fbimagereadURL(this);
+        });
+
+        function fbimagereadURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#fbImageviewer').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+@endpush

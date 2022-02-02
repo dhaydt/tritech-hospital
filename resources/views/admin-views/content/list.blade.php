@@ -35,6 +35,10 @@
         border-radius: 20px;
     }
 
+    .img-list {
+        height: 80px;
+    }
+
     .pasien-dialog {
         margin-top: 30vh;
     }
@@ -71,34 +75,45 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="form-group mb-3 pasien-form">
-                                                <div class="input-group input-group-merge input-group-alternative">
-                                                    <div class="input-group-prepend">
-                                                        <span
-                                                            class="input-group-text w-100 bg-grey text-white">Title</span>
+                                        <form id="updateForm" action="{{ route('admin.content.update') }}" method="post"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $ad->id }}">
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="title" class="form-label">Title</label>
+                                                    <input type="text" class="form-control" id="title" value="{{ $ad->title }}" name="title">
+                                                </div>
+                                                <div class="mb-3 d-flex">
+                                                    <div class="col-md-6 pl-0">
+                                                        <div class="custom-file" style="text-align: left">
+                                                            <input type="file" name="image" id="fbimageFileUploader"
+                                                                class="custom-file-input"
+                                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                                            <label class="custom-file-label"
+                                                                for="fbimageFileUploader">Change Image</label>
+                                                        </div>
                                                     </div>
-                                                    <input class="pl-2 form-control" name="title"
-                                                        value="{{ $ad->title }}"></input>
+                                                    <div class="col-md-6">
+                                                        <center>
+                                                            <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;"
+                                                                id="fbImageviewer"
+                                                                src="{{ asset('storage/content/'.$ad->image) }}"
+                                                                alt="banner image" />
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="title" class="form-label">Description</label>
+                                                    <textarea class="form-control" id="desc" name="desc"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group mb-3 pasien-form">
-                                                <div class="input-group input-group-merge input-group-alternative">
-                                                    <div class="input-group-prepend">
-                                                        <span
-                                                            class="input-group-text w-100 bg-grey text-white">Description</span>
-                                                    </div>
-                                                    <input class="pl-2 form-control" name="desc"
-                                                        value="{{ $ad->description }}"></input>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Keluar</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Keluar</button>
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="update({{ $ad->id }})">Update</button>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +127,8 @@
                                     <span class="status">{{ $ad->description }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
-                                    <img alt="Image placeholder" src="{{ asset('storage/content/'.$ad->image) }}">
+                                    <img alt="Image placeholder" class="img-list"
+                                        src="{{ asset('storage/content/'.$ad->image) }}">
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center justify-content-evenly action-col">
@@ -124,7 +140,8 @@
                                             data-bs-target="#staticBackdrop-{{ $ad->id }}">
                                             <i class="far fa-edit text-success"></i>
                                         </a>
-                                        <a href="{{ route('admin.checkup.delete', ['id' =>  $ad->id ]) }}" class="viewUser btn p-1">
+                                        <a href="{{ route('admin.content.delete', ['id' =>  $ad->id ]) }}"
+                                            class="viewUser btn p-1">
                                             <i class="fas fa-trash text-danger"></i>
                                         </a>
                                     </div>
@@ -159,24 +176,22 @@
         </div>
     </div>
     @endsection
+    @push('script')
     <script>
-        function update(val){
-        var id = val
-        var back = $('#back' + val).val()
-        // console.log(id, back)
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+        $("#fbimageFileUploader").change(function () {
+            fbimagereadURL(this);
         });
-        $.ajax({
-            url: "{{route('admin.checkup.update')}}",
-            method: 'POST',
-            data: {id: id, kembali: back},
-            success: function () {
-                toastr.success('Tanggal kembali berhasil diubah');
-                location.reload();
+
+        function fbimagereadURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#fbImageviewer').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
             }
-        });
-    }
+        }
     </script>
+    @endpush
