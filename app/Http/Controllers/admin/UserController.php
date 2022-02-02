@@ -105,20 +105,23 @@ class UserController extends Controller
         ]);
     }
 
-    public function customerList(Request $request)
+    public function customerList(Request $request, $status)
     {
         $query_param = [];
         $search = $request['search'];
         if ($request->has('search')) {
+            // dd($request);
             $key = explode(' ', $request['search']);
             $admin = Customer::where(function ($q) use ($key) {
                 foreach ($key as $value) {
                     $q->orWhere('name', 'like', "%{$value}%")
-                            ->orWhere('phone', 'like', "%{$value}%")
-                            ->orWhere('email', 'like', "%{$value}%");
+                            ->orWhere('phone', 'like', "%{$value}%");
                 }
             });
             $query_param = ['search' => $request['search']];
+            $admin = $admin->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+
+            return view('admin-views.customer.list', compact('admin', 'search'));
         } else {
             $admin = Customer::get();
         }

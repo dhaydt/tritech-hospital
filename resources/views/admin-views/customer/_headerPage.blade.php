@@ -2,20 +2,31 @@
     <div class="container-fluid">
         <div class="header-body">
             <div class="row align-items-center py-4">
-                <div class="col-lg-6 col-7">
+                <div class="col-lg-6 col-7 d-flex">
                     {{-- <h6 class="h2 text-white d-inline-block mb-0">Tables</h6> --}}
-                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-2">
-                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
+                    <nav aria-label="breadcrumb " class="d-none d-md-inline-block ml-md-2">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="javascript:">User Section</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Pasien</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-lg-6 col-5 text-right">
+                <div class="col-lg-6 col-5 text-right d-flex">
+                    <form action="{{ url()->current() }}" method="get" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                        @csrf
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <input class="form-control" name="search" placeholder="Search" value="{{ $search }}" type="text">
+                                <button type="submit" class="search-btn input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <button type="button" class="btn btn-sm btn-neutral p-2" data-toggle="modal"
                         data-target="#modal-form">Add Pasien</button>
-                    {{-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> --}}
+
                     <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form"
                         aria-hidden="true">
                         <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">

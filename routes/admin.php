@@ -60,7 +60,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/update_adminPass', [UserController::class, 'adminPass'])->name('adminPass');
         Route::post('/update_adminPict', [UserController::class, 'adminPict'])->name('adminPict');
 
-        Route::get('user_customer', [UserController::class, 'customerList'])->name('userCustomer');
+        Route::get('user_customer/{status}', [UserController::class, 'customerList'])->name('userCustomer');
         Route::get('user_customer/{id}', [UserController::class, 'customerView'])->name('userCustomerView');
         Route::get('user_del/{id}', [UserController::class, 'delete'])->name('userCustomerDel');
 

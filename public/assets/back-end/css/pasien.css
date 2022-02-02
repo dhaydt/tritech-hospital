@@ -23,3 +23,11 @@
     background-color: #afb7bf;
     font-weight: 700;
 }
+
+/* navbar */
+.search-btn{
+ border: none;
+ background-color: transparent;
+ display: flex;
+ align-items: center;
+}

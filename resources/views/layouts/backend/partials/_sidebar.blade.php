@@ -116,7 +116,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.userCustomer') }}">
+                    <a class="nav-link" href="{{ route('admin.userCustomer', ['status' => 'all']) }}">
                         <i class="ni ni-circle-08 text-blue"></i> {{ __('Pasien') }}
                     </a>
                 </li>
