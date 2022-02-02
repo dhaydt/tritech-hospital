@@ -2,16 +2,35 @@
     <div class="container-fluid">
         <div class="header-body">
             <div class="row align-items-center py-4">
-                <div class="col-lg-6 col-7">
+                <div class="col-lg-3 col-4 d-flex">
                     {{-- <h6 class="h2 text-white d-inline-block mb-0">Tables</h6> --}}
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-2">
-                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Checkup</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-lg-6 col-5 text-right">
+                <div class="col-lg-9 col-5 text-right d-flex">
+                    <div class="d-flex justify-content-between">
+                        <form action="{{ url()->current() }}" id="sort-range" method="GET" class="d-flex mb-0">
+                            {{-- @csrf --}}
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"  id="basic-addon1">Start date</span>
+                                </div>
+                                <input type="date" value="{{ $start }}" class="form-control" name="start-date">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon2">End date</span>
+                                </div>
+                                <input type="date" autocomplete="off" value="{{ $end }}" name="end-date" required class="form-control dated" id="end-date" aria-describedby="basic-addon2">
+                            </div>
+                            <button class="btn btn-primary btn-sm mx-3" type="submit">Filter</button>
+                        </form>
+                    </div>
+                    <a href="{{ route('admin.checkup.list') }}" class="btn-clear btn btn-sm btn-danger p-2">Clear Filter</a>
                     <button type="button" class="btn btn-sm btn-neutral p-2" data-toggle="modal"
                         data-target="#modal-form">Add Checkup</button>
                     {{-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> --}}

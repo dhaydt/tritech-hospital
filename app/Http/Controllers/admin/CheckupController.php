@@ -14,27 +14,31 @@ class CheckupController extends Controller
 {
     public function index(Request $request)
     {
+        // dd($request);
         $pasien = Customer::get();
         $query_param = [];
+        $start = $request['start-date'];
+        $end = $request['end-date'];
         $search = $request['search'];
-        if ($request->has('search')) {
-            $key = explode(' ', $request['search']);
-            $admin = Checkup::where(function ($q) use ($key) {
-                foreach ($key as $value) {
-                    $q->orWhere('name', 'like', "%{$value}%")
-                            ->orWhere('phone', 'like', "%{$value}%")
-                            ->orWhere('email', 'like', "%{$value}%");
-                }
-            });
-            $query_param = ['search' => $request['search']];
+        if ($request->has('start-date')) {
+            if ($start == $end) {
+                $orders = Checkup::where('datang', 'like', "%{$start}%");
+            } else {
+                $orders = Checkup::whereBetween('datang', [$start, $end]);
+            }
+            // $query_param = ['start-date' => $start, 'end-date' => $end];
+
+            // $admin = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+
+            // return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien'));
         } else {
-            $admin = Checkup::with(['customer']);
+            $orders = Checkup::with(['customer']);
         }
 
         session()->put('title', 'Checkup List');
-        $admin = $admin->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+        $admin = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
 
-        return view('admin-views.checkup.list', compact('admin', 'search', 'pasien'));
+        return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien'));
     }
 
     public function store(Request $request)
