@@ -44,18 +44,18 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+        // dd($request->description);
         $request->validate([
             'title' => 'required',
-            'desc' => 'required',
+            // 'desc' => 'required',
         ], [
             'title.required' => 'Title Content is required!',
-            'desc.required' => 'Description Content is required!',
+            // 'desc.required' => 'Description Content is required!',
         ]);
         $checkup = new Content();
 
         $checkup->title = $request['title'];
-        $checkup->description = $request['desc'];
+        $checkup->description = $request->description;
         $checkup->image = ImageManager::upload('content/', 'png', $request->file('image'));
 
         $checkup->save();
@@ -69,7 +69,7 @@ class ContentController extends Controller
         // dd($request);
         $pasien = Content::where('id', $request->id)->first();
         $pasien->title = $request->title;
-        $pasien->description = $request->desc;
+        $pasien->description = $request->description;
         if ($request->file('image')) {
             $pasien->image = ImageManager::update('content/', $pasien->image, 'png', $request->file('image'));
         }

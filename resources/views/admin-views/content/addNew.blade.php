@@ -47,7 +47,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="desc" class="form-label">Description</label>
-                            <textarea class="form-control" id="desc" name="desc"></textarea>
+                            {{-- <textarea class="form-control" id="desc" name="desc"></textarea> --}}
+                            <textarea name="description" class="editor textarea" cols="30"
+                            rows="10" required></textarea>
                         </div>
                         <div class="text-end w-100">
                             <button type="submit" class="btn btn-primary text-end">Save</button>
@@ -77,4 +79,13 @@
             }
         }
     </script>
+     {{--ck editor--}}
+     <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+     <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+     <script>
+         $('.textarea').ckeditor({
+             contentsLangDirection : '{{Session::get('direction')}}',
+         });
+     </script>
+     {{--ck editor--}}
 @endpush

@@ -67,7 +67,7 @@
                             <div class="modal fade" id="staticBackdrop-{{ $ad->id }}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                 aria-hidden="true">
-                                <div class="modal-dialog pasien-dialog">
+                                <div class="modal-dialog modal-lg pasien-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title capitalize" id="staticBackdropLabel">Update {{
@@ -105,7 +105,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="title" class="form-label">Description</label>
-                                                    <textarea class="form-control" id="desc" name="desc"></textarea>
+                                                    <textarea name="description" class="editor textarea" cols="30"
+                                                        rows="10" required>{!! $ad->description !!}</textarea>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -123,8 +124,8 @@
                                 <td class="budget text-center capitalize">
                                     <span class="status">{{ $ad->title }}</span>
                                 </td>
-                                <td class="budget text-center capitalize">
-                                    <span class="status">{{ $ad->description }}</span>
+                                <td class="text-center capitalize">
+                                    {!! $ad->description !!}
                                 </td>
                                 <td class="budget text-center capitalize">
                                     <img alt="Image placeholder" class="img-list"
@@ -193,5 +194,14 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+    </script>
+    <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $('.textarea').ckeditor({
+            contentsLangDirection : '{{Session::get('direction')}}',
+        });
     </script>
     @endpush
