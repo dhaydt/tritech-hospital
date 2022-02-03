@@ -1,75 +1,56 @@
-@extends('layouts.front-end.app')
-<style>
-    .login-card{
-        height: 98vh;
-        position: relative;
-    }
-    .card-header.head-login{
-        border-bottom: none;
-    }
-    .app-title h1 {
-        text-transform: capitalize;
-        font-weight: 700;
-    }
-    .card-header .avatar-login {
-        height: 95px;
-        width: 95px;
-        border: 3px solid #83B5FF;
-    }
-    .title-login {
-        font-size: 22px;
-        font-weight: 600;
-        color: #413c3c;
-    }
-    .text-center .btn-login{
-        /* background-color: {{ $web_config['primary_color'] }};
-        border-color: {{ $web_config['primary_color'] }}; */
-        font-weight: 700;
-        font-size: 18px;
-        padding: 10px;
-        border-radius: 12px;
-    }
-    .custom-control .label{
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 1;
-    }
-    .label-forgot {
-        font-size: 17px;
-        font-weight: 600;
-        line-height: 1.3;
-        color: #6d6d6d;
-        text-decoration: none;
-    }
-    .login-icon {
-        color: #6d6d6d;
-    }
-    #changePassTarget a {
-        text-decoration: none;
-    }
-    img.clipt-path{
-        position: absolute;
-        top: 0;
-        width: 60%;
-        right: 0;
-    }
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    img.clipt-path2{
-        position: absolute;
-        bottom: 0;
-        width: 75%;
-        left: 0;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</style>
-@section('content')
-<div class="container mt-2">
-    <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-            <div class="card login-card shadow border-0 justify-content-center">
-                    <img class="clipt-path" src="{{ asset('assets/img/bg-vector.svg') }}" alt="">
-                <div class="row p-4 mt--4">
-                    <div class="card-header head-login bg-transparent d-flex flex-column align-items-center">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title')</title>
+    <!-- Favicon -->
+    <link href="{{ asset('storage/company/'.$web_config['fav_icon']->value) }}" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Extra details for Live View on GitHub Pages -->
+
+    <!-- Icons -->
+    <link href="{{ asset('assets') }}/front-end/css/login.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/back-end/css/toastr.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Argon CSS -->
+    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="{{ $class ?? '' }}">
+    {{-- @auth()
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @include('layouts.navbars.sidebar')
+    @endauth --}}
+
+    <div class="main-content text-center">
+        <div class="row main-row mx-auto">
+            <div class="col-12">
+                <img class="clipt-path" src="{{ asset('assets/img/bg-vector.svg') }}" alt="">
+                <div class="login-card border-0">
+                <div class="row px-4">
+                    <div class="card-header head-login bg-transparent">
                         <div class="avatar avatar-login">
                             <img src="{{ asset('storage/company').'/avatar.png' }}" alt="">
                         </div>
@@ -78,7 +59,7 @@
                         </div>
                     </div>
                     <div class="card-body px-lg-5">
-                        <div class="title-login mb-3">Silahkan login</div>
+                        <div class="title-login mb-2">Silahkan login</div>
                         <form class="js-validate" role="form" method="POST" action="{{ route('customersLogin_submit') }}">
                             @csrf
 
@@ -124,7 +105,7 @@
                                 </span>
                                 @endif
                             </div>
-                            <div class="row">
+                            <div class="row text-left">
                                 <div class="col-6">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
@@ -145,50 +126,44 @@
                         </form>
                     </div>
                 </div>
-                <img class="clipt-path2" src="{{ asset('assets/img/bg-vector2.svg') }}" alt="">
             </div>
-            {{-- <div class="row mt-3">
-                <div class="col-6">
-                    @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="text-light">
-                        <small>{{ __('Forgot password?') }}</small>
-                    </a>
-                    @endif
-                </div>
-                <div class="col-6 text-right">
-                    <a href="{{ route('customersReg') }}" class="text-light">
-                        <small>{{ __('Create new account') }}</small>
-                    </a>
-                </div>
-            </div> --}}
+            <img class="clipt-path2" src="{{ asset('assets/img/bg-vector2.svg') }}" alt="">
+        </div>
         </div>
     </div>
-</div>
-@endsection
 
+    {{-- @guest()
+    @if(!Route::is('customersLogin'))
+    @include('layouts.front-end.partials._footer')
+    @endif
+    @endguest --}}
 
-<!-- JS Implementing Plugins -->
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="{{asset('assets/back-end')}}/js/vendor.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JS Front -->
-{{-- <script src="{{asset('assets/back-end')}}/js/theme.min.js"></script> --}}
-<script src="{{asset('assets/back-end')}}/js/toastr.js"></script>
-{!! Toastr::message() !!}
+    <script src="{{asset('assets/back-end')}}/js/vendor.min.js"></script>
+    <script src="{{asset('assets/back-end')}}/js/theme.min.js"></script>
+    <script src="{{asset('assets/back-end')}}/js/sweet_alert.js"></script>
+    <script src="{{asset('assets/back-end')}}/js/toastr.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    {!! Toastr::message() !!}
 
-@if ($errors->any())
-<script>
-    @foreach($errors->all() as $error)
+    @if ($errors->any())
+    <script>
+        @foreach($errors->all() as $error)
         toastr.error('{{$error}}', Error, {
             CloseButton: true,
             ProgressBar: true
         });
         @endforeach
-</script>
-@endif
+        </script>
+    @endif
+    @stack('js')
 
-<script>
-    $(document).on('ready', function () {
+    <!-- Argon JS -->
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    <script>
+         $(document).on('ready', function () {
         // INITIALIZATION OF SHOW PASSWORD
         // =======================================================
         $('.js-toggle-password').each(function () {
@@ -201,4 +176,7 @@
             $.HSCore.components.HSValidation.init($(this));
         });
     });
-</script>
+    </script>
+</body>
+
+</html>

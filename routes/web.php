@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('web-views.home');
-// })->name('home');
+Route::get('/', function () {
+    return redirect()->route('home');
+});
 
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');
@@ -32,12 +32,12 @@ Route::get('/storage-link', function () {
 
 Auth::routes();
 
-Route::get('/', [WebController::class, 'index'])->name('home');
-Route::get('/customers/register', [RegisterController::class, 'index'])->name('customersReg');
-Route::post('/customers/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
-Route::get('/customers/login', [LoginController::class, 'index'])->name('customersLogin');
-Route::post('/customers/login', [LoginController::class, 'submit'])->name('customersLogin_submit');
-Route::get('/customers/logout', [LoginController::class, 'logout'])->name('customersLogout');
+Route::get('/pasien', [WebController::class, 'index'])->name('home');
+Route::get('/pasien/register', [RegisterController::class, 'index'])->name('customersReg');
+Route::post('/pasien/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
+Route::get('/pasien/login', [LoginController::class, 'index'])->name('customersLogin');
+Route::post('/pasien/login', [LoginController::class, 'submit'])->name('customersLogin_submit');
+Route::get('/pasien/logout', [LoginController::class, 'logout'])->name('customersLogout');
 
 Auth::routes();
 
