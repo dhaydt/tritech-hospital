@@ -14,11 +14,19 @@ class WebController extends Controller
             return redirect()->route(('customersLogin'));
         }
 
-        $blog = Content::get();
+        $blog = Content::orderBy('id', 'DESC')->get();
 
         session()->put('page-title', 'Praktek Mandiri');
 
         return view('web-views.home', compact('blog'));
+    }
+
+    public function content($id)
+    {
+        $blog = Content::where('id', $id)->first();
+        session()->put('page-title', 'Edukasi');
+
+        return view('web-views.content', compact('blog'));
     }
 
     public function checkout_complete(Request $request)
