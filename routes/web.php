@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('web-views.home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('web-views.home');
+// })->name('home');
 
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');
@@ -32,7 +32,7 @@ Route::get('/storage-link', function () {
 
 Auth::routes();
 
-Route::get('/home', [WebController::class, 'index'])->name('home');
+Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/customers/register', [RegisterController::class, 'index'])->name('customersReg');
 Route::post('/customers/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
 Route::get('/customers/login', [LoginController::class, 'index'])->name('customersLogin');
@@ -40,8 +40,6 @@ Route::post('/customers/login', [LoginController::class, 'submit'])->name('custo
 Route::get('/customers/logout', [LoginController::class, 'logout'])->name('customersLogout');
 
 Auth::routes();
-
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);

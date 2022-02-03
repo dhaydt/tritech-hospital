@@ -8,6 +8,11 @@ class WebController extends Controller
 {
     public function index()
     {
+        // dd(auth('customer')->user());
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
+
         return view('web-views.home');
     }
 
