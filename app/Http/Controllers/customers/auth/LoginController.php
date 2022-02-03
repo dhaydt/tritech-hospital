@@ -41,7 +41,7 @@ class LoginController extends Controller
         if (isset($user) && auth('customer')->attempt(['phone' => $request->phone, 'password' => $request->password], $remember)) {
             Toastr::info('Welcome  '.$user->name.' to '.env('APP_NAME').' !');
 
-            return view('welcome');
+            return view('web-views.home');
         }
         // dd($user);
 

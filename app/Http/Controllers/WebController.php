@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
+    public function index()
+    {
+        return view('web-views.home');
+    }
+
     public function checkout_complete(Request $request)
     {
         session()->put('payment', $request['payment_method']);

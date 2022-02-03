@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('web-views.home');
 })->name('home');
 
 Route::get('/storage-link', function () {
@@ -32,7 +32,7 @@ Route::get('/storage-link', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [WebController::class, 'index'])->name('home');
 Route::get('/customers/register', [RegisterController::class, 'index'])->name('customersReg');
 Route::post('/customers/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
 Route::get('/customers/login', [LoginController::class, 'index'])->name('customersLogin');
