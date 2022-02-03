@@ -1,4 +1,4 @@
-<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-light">
     <div class="container px-4">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('storage/company/'.$web_config['web_logo']->value) }}" />
