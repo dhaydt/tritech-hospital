@@ -11,9 +11,9 @@
                                 <span class="nav-link-inner--text">{{ __('Beranda') }}</span>
                             </a>
                         </li>
-                        <li class="nav-item {{Request::is('profile')?'active':''}}">
+                        <li class="nav-item {{Request::is('checkup')?'active':''}}">
                             <a class="nav-link nav-footer nav-link-icon d-flex flex-column align-items-center"
-                                href="javascript:">
+                                href="{{ route('checkup') }}">
                                 <i class="fas fa-briefcase mb-1"></i>
                                 <span class="nav-link-inner--text">{{ __('Pemeriksaan') }}</span>
                             </a>

@@ -56,6 +56,8 @@ Route::prefix('content')->name('content.')->group(function () {
     Route::get('/content/{id}', [WebController::class, 'content'])->name('view');
 });
 
+Route::get('/checkup', [WebController::class, 'checkup'])->name('checkup');
+
 // Share Controller
 Route::post('image-upload', [SharedController::class, 'imageUpload'])->name('image-upload');
 Route::get('image-remove/{id}/{folder}', [SharedController::class, 'imageRemove'])->name('image-remove');
