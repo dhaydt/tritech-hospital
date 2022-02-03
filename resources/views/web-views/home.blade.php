@@ -1,17 +1,20 @@
 @extends('layouts.front-end.app')
 
 @section('content')
-    <div class="header py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mt-7 mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-dark">{{ __('Welcome to TigaTech Backend General.') }}</h1>
-                    </div>
+<div class="container-fluid px-3 my-3">
+    <div class="row">
+        <div class="col-12">
+            @foreach ($blog as $b)
+            <div class="card blog-card mb-3">
+                <a href="javascript:" class="img-link">
+                    <img src="{{ asset('storage/content').'/'.$b['image'] }}" class="card-img-top" alt="blog-img">
+                </a>
+                <div class="card-body px-2 py-1">
+                    <h5 class="card-title">{{ $b->title }}</h5>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
-
-    <div class="container mt--10 pb-5"></div>
+</div>
 @endsection

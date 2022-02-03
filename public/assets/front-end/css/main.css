@@ -1,7 +1,76 @@
-.main-content {
+:root {
+    --main-color: #83B5FF;
+}
+
+body .main-content {
     font-family: 'Darker Grotesque', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-row  {
+    max-width: 600px;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: scroll;
+    background-color: #f6f6f6;
+}
+
+/* Header */
+
+.nav-mobile {
+    background-color: var(--main-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.page-title h2{
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+
+/* Footer */
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f2eeed;
+}
+
+.nav-footer span{
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.nav-item.active a.nav-link.nav-link-icon{
+    color: var(--main-color) !important;
+}
+
+/* home */
+.card.blog-card {
+    border-radius: 10px;
+}
+
+.img-link{
+    height: 160px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.img-link img {
+    height: auto;
+    width: 100%;
 }

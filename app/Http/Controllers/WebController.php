@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -13,7 +14,11 @@ class WebController extends Controller
             return redirect()->route(('customersLogin'));
         }
 
-        return view('web-views.home');
+        $blog = Content::get();
+
+        session()->put('page-title', 'Praktek Mandiri');
+
+        return view('web-views.home', compact('blog'));
     }
 
     public function checkout_complete(Request $request)

@@ -18,7 +18,7 @@
 
 <div class="container py-3 py-sm-7">
     @php($e_commerce_logo=\App\Models\BusinessSetting::where(['type'=>'company_web_logo'])->first()->value)
-    <a class="d-flex justify-content-center mb-3" href="/">
+    <a class="d-flex justify-content-center mb-3" href="{{ route('home') }}">
         <img class="z-index-2" src="{{asset("storage/company/".$e_commerce_logo)}}" alt="Logo"
              onerror="this.src='{{asset('assets/back-end/img/400x400/img2.jpg')}}'"
              {{-- style="width: 8rem;" --}}

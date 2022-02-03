@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="{{ $class ?? '' }}">
+<body class="mb-0">
     {{-- @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
@@ -45,17 +45,15 @@
     @endauth --}}
 
     <div class="main-content">
-        @if(!Route::is('customersLogin'))
-        @include('layouts.front-end.partials._header')
-        @endif
-        @yield('content')
+        <div class="row main-row mx-auto">
+            <div class="col-12 p-0">
+                @include('layouts.front-end.partials._header')
+                @yield('content')
+            </div>
+        </div>
     </div>
 
-    {{-- @guest()
-    @if(!Route::is('customersLogin'))
     @include('layouts.front-end.partials._footer')
-    @endif
-    @endguest --}}
 
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

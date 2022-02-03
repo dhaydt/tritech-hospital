@@ -54,7 +54,7 @@
                             <tr class="text-center">
                                 <th scope="col" class="sort" data-sort="name">NO</th>
                                 <th scope="col" class="sort" data-sort="budget">Judul</th>
-                                <th scope="col" class="sort" data-sort="status">Deskripsi</th>
+                                {{-- <th scope="col" class="sort" data-sort="status">Deskripsi</th> --}}
                                 <th scope="col" class="sort" data-sort="status">Image</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
                             </tr>
@@ -87,7 +87,7 @@
                                                 <div class="mb-3 d-flex">
                                                     <div class="col-md-6 pl-0">
                                                         <div class="custom-file" style="text-align: left">
-                                                            <input type="file" name="image" id="fbimageFileUploader"
+                                                            <input type="file" name="image" id="fbimageFileUploaders"
                                                                 class="custom-file-input"
                                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                                             <label class="custom-file-label"
@@ -96,7 +96,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <center>
-                                                            <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px;"
+                                                            <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px; max-width:100%;"
                                                                 id="fbImageviewer"
                                                                 src="{{ asset('storage/content/'.$ad->image) }}"
                                                                 alt="banner image" />
@@ -124,9 +124,9 @@
                                 <td class="budget text-center capitalize">
                                     <span class="status">{{ $ad->title }}</span>
                                 </td>
-                                <td class="text-center capitalize">
+                                {{-- <td class="text-center capitalize">
                                     {!! $ad->description !!}
-                                </td>
+                                </td> --}}
                                 <td class="budget text-center capitalize">
                                     <img alt="Image placeholder" class="img-list"
                                         src="{{ asset('storage/content/'.$ad->image) }}">
@@ -179,7 +179,7 @@
     @endsection
     @push('script')
     <script>
-        $("#fbimageFileUploader").change(function () {
+        $("#fbimageFileUploaders").change(function () {
             fbimagereadURL(this);
         });
 
