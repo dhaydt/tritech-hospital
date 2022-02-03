@@ -6,6 +6,7 @@
         <div class="col-12">
             <div class="card card-checkup mb-3">
                 <div class="card-body p-2">
+                    @if (isset($data))
                     <div class="field-group">
                         <span class="field-title">Nama Lengkap</span><br>
                         <h5 class="field-content">{{ $data->customer->name }}</h5>
@@ -18,6 +19,14 @@
                         <span class="field-title">Pemeriksaan kembali</span><br>
                         <h3 class="field-content">{{ date('d-m-Y', strtotime($data->kembali)) }}</h3>
                     </div>
+                    @else
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h2 class="text-bold">Belum ada pemeriksaan</h2>
+                        </div>
+                    </div>
+                    @endif
+
                 </div>
             </div>
 
