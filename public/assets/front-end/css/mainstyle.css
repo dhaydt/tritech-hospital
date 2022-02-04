@@ -2,6 +2,10 @@
     --main-color: #83b5ff;
 }
 
+#main-content {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
 body{
     font-family: 'Poppins', sans-serif;
 }
