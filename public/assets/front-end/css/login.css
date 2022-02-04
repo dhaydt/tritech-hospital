@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #32DB46;
+    --secondary-color: #BFFCC6;
+    --third-color: #2D3194;
+    --forth-color: #C4FAF8;
+}
+
 body{
     font-family: 'Poppins', sans-serif !important;
     padding: 0;
@@ -40,20 +47,31 @@ body .main-content{
     font-size: 20px;
 }
 .card-header .avatar-login {
-    height: 95px;
-    width: 95px;
-    border: 3px solid #83B5FF;
+    height: 120px;
+    width: 122px;
+    border: 3px solid var(--primary-color);
+}
+
+.avatar.logo-avatar {
+    height: 110px;
+    width: 110px;
+}
+
+.logo-avatar img {
+    height: 100%;
+    width: 100%;
 }
 .title-login {
     font-size: 18px;
     font-weight: 500;
     text-align: left;
-    color: #413c3c;
+    color: var(--third-color);
 }
 .text-center .btn-login{
-    /* background-color: {{ $web_config['primary_color'] }};
-    border-color: {{ $web_config['primary_color'] }}; */
-    font-weight: 700;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 500;
+    color: var(--third-color);
     font-size: 18px;
     padding: 10px;
     border-radius: 12px;
@@ -73,19 +91,21 @@ body .main-content{
 .login-icon {
     color: #6d6d6d;
 }
+
 #changePassTarget a {
     text-decoration: none;
 }
 img.clipt-path{
     position: absolute;
     top: 0;
-    width: 60%;
+    height: 220px;
+    width: 100%;
     right: 0;
 }
 
 img.clipt-path2{
     position: absolute;
     bottom: 0;
-    width: 75%;
+    width: 100%;
     left: 0;
 }

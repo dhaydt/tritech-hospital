@@ -46,21 +46,22 @@
 
     <div class="main-content text-center">
         <div class="row main-row mx-auto">
-            <div class="col-12">
-                <img class="clipt-path" src="{{ asset('assets/img/bg-vector.svg') }}" alt="">
+            <div class="col-12 px-0">
+                <img class="clipt-path" src="{{ asset('assets/front-end/img/bg-top.jpeg') }}" alt="">
                 <div class="login-card border-0">
                 <div class="row px-4">
                     <div class="card-header head-login bg-transparent">
                         <div class="avatar avatar-login">
-                            <img src="{{ asset('storage/company').'/avatar.png' }}" alt="">
+                            <img src="{{ asset('assets/front-end/img').'/avatar.jpeg' }}" alt="">
                         </div>
-                        <div class="app-title text-center mt-2 mb-2 px-4">
-                            <h1>Praktek mandiri</h1>
-                            <h1>bidan ratna dewi</h1>
+                    </div>
+                    <div class="logo-session mt-4">
+                        <div class="logo-avatar avatar">
+                            <img src="{{ asset('assets/front-end/img/logo.jpeg') }}" alt="">
                         </div>
                     </div>
                     <div class="card-body px-lg-5">
-                        <div class="title-login mb-2">Silahkan login</div>
+                        <div class="title-login mb-3">Silahkan login</div>
                         <form class="js-validate" role="form" method="POST" action="{{ route('customersLogin_submit') }}">
                             @csrf
 
@@ -113,11 +114,11 @@
                                         <label class="form-check-label label-forgot" for="flexSwitchCheckChecked">Simpan Password</label>
                                         </div>
                                 </div>
-                                    <div class="col-6 text-end">
+                                    {{-- <div class="col-6 text-end">
                                         <div class="forgot-password">
                                             <a href="" class="label-forgot">Lupa Password ?</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                             </div>
                             <div class="d-flex justify-content-center">
                                 <div class="col-12 text-center px-0">
@@ -128,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <img class="clipt-path2" src="{{ asset('assets/img/bg-vector2.svg') }}" alt="">
+            <img class="clipt-path2" src="{{ asset('assets/front-end/img/bg-bot.jpeg') }}" alt="">
         </div>
         </div>
     </div>
