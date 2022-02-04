@@ -37,6 +37,6 @@ class LoginAdminController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('home');
+        return redirect()->route('admin.dashboard');
     }
 }
