@@ -17,7 +17,7 @@ class WebController extends Controller
 
         $blog = Content::orderBy('id', 'DESC')->get();
 
-        session()->put('page-title', 'Praktek Mandiri');
+        session()->put('page-title', 'home');
 
         return view('web-views.home', compact('blog'));
     }

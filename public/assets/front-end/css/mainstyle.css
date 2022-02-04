@@ -38,7 +38,7 @@ body .main-content {
 /* Header */
 
 .nav-mobile {
-    background-color: var(--main-color);
+    background-color: var(--secondary-color);
     position: fixed !important;
     top: 0;
     height: 55px;
@@ -47,9 +47,15 @@ body .main-content {
     z-index: 9;
 }
 
+.title-name{
+    color: var(--third-color);
+    font-size: 14px;
+    font-weight: 600;
+}
+
 .page-title h2 {
     font-weight: 700;
-    color: #fff;
+    color: var(--third-color);
     margin-bottom: 0;
     letter-spacing: 1px;
     font-size: 20px;
@@ -62,7 +68,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #f2eeed;
+    background-color: var(--forth-color);
 }
 
 .nav-footer span {
@@ -70,8 +76,12 @@ footer {
     letter-spacing: 1px;
 }
 
+.nav-item a.nav-link.nav-link-icon {
+    color: var(--third-color) !important;
+}
+
 .nav-item.active a.nav-link.nav-link-icon {
-    color: var(--main-color) !important;
+    color: var(--primary-color) !important;
 }
 
 /* home */
