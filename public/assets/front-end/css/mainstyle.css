@@ -34,6 +34,7 @@ body .main-content {
     background-color: var(--main-color);
     position: fixed !important;
     top: 0;
+    height: 55px;
     left: 0;
     right: 0;
     z-index: 9;
@@ -52,6 +53,7 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
+    height: 60px;
     right: 0;
     background-color: #f2eeed;
 }
