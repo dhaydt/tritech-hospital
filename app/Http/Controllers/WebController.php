@@ -24,6 +24,9 @@ class WebController extends Controller
 
     public function content($id)
     {
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
         $blog = Content::where('id', $id)->first();
         session()->put('page-title', 'Edukasi');
 
@@ -32,6 +35,9 @@ class WebController extends Controller
 
     public function checkup()
     {
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
         $id = auth('customer')->user()->id;
         $data = Checkup::with('customer')->latest('created_at')->where('pasien_id', $id)->first();
         session()->put('page-title', 'Pemeriksaan');

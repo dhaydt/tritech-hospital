@@ -21,9 +21,24 @@ class UserController extends Controller
     // }
     public function edit()
     {
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
         $customer = auth('customer')->user();
+        session()->put('page-title', 'Profil Edit');
 
         return view('web-views.profile.profileEdit', compact('customer'));
+    }
+
+    public function view()
+    {
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
+        $data = auth('customer')->user();
+        session()->put('page-title', 'Profil');
+
+        return view('web-views.profile.profileView', compact('data'));
     }
 
     public function update(Request $request)
@@ -32,7 +47,7 @@ class UserController extends Controller
         $image = $request->file('image');
         // foreach ($img as $image) {
         // }
-        // dd($image);
+        // dd($request);
 
         if ($image != null) {
             $imageName = ImageManager::update('profile/', auth('customer')->user()->image, 'png', $request->image);
@@ -44,20 +59,30 @@ class UserController extends Controller
              'image' => $imageName,
          ]);
 
-        if ($request['password'] != $request['con_password']) {
-            Toastr::error('Password did not match.');
+        if ($request['password'] != null) {
+            if ($request['password'] != $request['con_password']) {
+                Toastr::error('Password tidak sama.');
 
-            return back();
+                return back();
+            }
+            $userDetails = [
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'password' => strlen($request->password) > 3 ? bcrypt($request->password) : auth('customer')->user()->password,
+            ];
+        } else {
+            $userDetails = [
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                // 'password' => strlen($request->password) > 3 ? bcrypt($request->password) : auth('customer')->user()->password,
+            ];
         }
 
-        $userDetails = [
-             'name' => $request->name,
-             'phone' => $request->phone,
-             'password' => strlen($request->password) > 3 ? bcrypt($request->password) : auth('customer')->user()->password,
-         ];
         if (auth('customer')->check()) {
             Customer::where(['id' => auth('customer')->id()])->update($userDetails);
-            Toastr::info('Update successfully');
+            Toastr::info('Data berhasil di update');
 
             return redirect()->back();
         } else {

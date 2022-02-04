@@ -86,6 +86,7 @@ Route::get('/shipping', [WebController::class, 'shipping'])->name('shipping');
 // profile
 Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+    Route::get('/view', [UserController::class, 'view'])->name('view');
     Route::post('/update', [UserController::class, 'update'])->name('user-update');
 });
 

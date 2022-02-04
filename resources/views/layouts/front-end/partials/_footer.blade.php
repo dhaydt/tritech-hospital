@@ -20,7 +20,7 @@
                         </li>
                         <li class="nav-item {{Request::is('profile')?'active':''}}">
                             <a class="nav-link nav-footer nav-link-icon d-flex flex-column align-items-center"
-                                href="{{ route('profile.edit') }}">
+                                href="{{ route('profile.view') }}">
                                 <i class="fas fa-user mb-1"></i>
                                 <span class="nav-link-inner--text">{{ __('Profil') }}</span>
                             </a>
