@@ -36,8 +36,8 @@ body .main-content{
 }
 .app-title h1 {
     text-transform: capitalize;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 500;
+    font-size: 20px;
 }
 .card-header .avatar-login {
     height: 95px;

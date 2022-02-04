@@ -58,6 +58,6 @@ class LoginController extends Controller
 
         // session()->put('hide_banner', false);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

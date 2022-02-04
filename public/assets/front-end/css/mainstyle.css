@@ -124,14 +124,14 @@ footer {
 }
 .field-title {
     color: #757171;
-    font-weight: 560;
+    font-weight: 400;
     text-transform: capitalize;
     font-size: 14px;
 }
 
 .field-content {
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 16px;
     color: #000;
 }

@@ -55,7 +55,8 @@
                             <img src="{{ asset('storage/company').'/avatar.png' }}" alt="">
                         </div>
                         <div class="app-title text-center mt-2 mb-2 px-4">
-                            <h1>Praktek mandiri bidan ratna dewi </h1>
+                            <h1>Praktek mandiri</h1>
+                            <h1>bidan ratna dewi</h1>
                         </div>
                     </div>
                     <div class="card-body px-lg-5">
