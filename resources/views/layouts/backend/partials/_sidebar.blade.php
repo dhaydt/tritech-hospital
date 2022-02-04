@@ -3,7 +3,7 @@
         display: none;
     }
 </style>
-<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-dark bg-dark" id="sidenav-main">
     <div class="container-fluid">
         <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main"
@@ -11,8 +11,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('storage/company/'.$web_config['web_logo']->value) }}" class="navbar-brand-img" alt="...">
+        <a class="navbar-brand mx-auto pt-0" href="{{ route('home') }}">
+            <div class="nav-avatar">
+                <img src="{{ asset('storage/company/'.$web_config['web_logo']->value) }}" class="nav-img-brand" alt="...">
+            </div>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">

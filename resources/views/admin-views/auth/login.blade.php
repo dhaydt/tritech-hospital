@@ -26,7 +26,7 @@
     </a>
     <div class="row justify-content-center h-100 align-items-center">
         <div class="col-lg-7 col-md-8">
-            <div class="card bg-secondary shadow border-0">
+            <div class="card card-adminlogin shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
                         <small>
@@ -86,7 +86,7 @@
                             </label>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
+                            <button type="submit" class="loginAdmin-btn btn my-4">{{ __('Sign in') }}</button>
                         </div>
                     </form>
                 </div>

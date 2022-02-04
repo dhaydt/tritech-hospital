@@ -16,6 +16,7 @@
     <!-- Extra details for Live View on GitHub Pages -->
 
     <!-- Icons -->
+    <link href="{{ asset('assets') }}/back-end/css/mainstyle.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -32,6 +33,9 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <style>
+        body.backend-body{
+            background-color: #fff;
+        }
         .main-content .header.bg-primary {
             background-color: {{$web_config['primary_color']}} !important;
         }
@@ -135,7 +139,7 @@
     </style>
 </head>
 
-<body class="{{ $class ?? '' }}">
+<body class="backend-body">
     @auth('admin')
     <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="GET" style="display: none;">
         @csrf
