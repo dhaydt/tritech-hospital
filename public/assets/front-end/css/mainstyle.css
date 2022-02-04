@@ -43,6 +43,7 @@ body .main-content {
 .page-title h2 {
     font-weight: 700;
     color: #fff;
+    margin-bottom: 0;
     letter-spacing: 1px;
     font-size: 20px;
 }
