@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('content')
-    @include('layouts.headers.cards')
+    @include('admin-views.system.partials.cards')
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -9,9 +9,9 @@
                 <div class="card bg-gradient-default shadow">
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
-                            <div class="col">
+                            <div class="col-7">
                                 <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
+                                <h2 class="text-white mb-0">Jumlah pemeriksaan pasien</h2>
                             </div>
                             <div class="col">
                                 <ul class="nav nav-pills justify-content-end">
