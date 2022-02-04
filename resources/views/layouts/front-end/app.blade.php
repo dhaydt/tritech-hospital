@@ -33,7 +33,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Pull refresh plugin -->
-    <link rel="stylesheet" href="{{ asset('assets/front-end/pull/mk-pullfresh.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/front-end/pull/mk-pullfresh.css') }}"> --}}
 
 </head>
 
@@ -66,7 +66,7 @@
     <script src="{{asset('assets/back-end')}}/js/sweet_alert.js"></script>
     <script src="{{asset('assets/back-end')}}/js/toastr.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <script src="{{ asset('assets/front-end/pull/mk-pullfresh.js') }}"></script>
+    {{-- <script src="{{ asset('assets/front-end/pull/mk-pullfresh.js') }}"></script> --}}
     {!! Toastr::message() !!}
 
     @if ($errors->any())
@@ -80,11 +80,11 @@
         </script>
     @endif
     @stack('js')
-        <script>
+        {{-- <script>
             $('#main-content').mkPullFresh({
             indicatorHtml:'<div class="mkpf-envelop"><div class="mkpf-indicator-wrapper" style="z-index:11; margin-top: 200px;"><div class="mkpf-indicator"><div class="mkpf-icon-wrapper"><i class="mkpf-arrow-down"></i></div><i class="mkpf-spinner"></i></div></div></div>'
             });
-        </script>
+        </script> --}}
     <!-- Argon JS -->
     <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
     @stack('script')
