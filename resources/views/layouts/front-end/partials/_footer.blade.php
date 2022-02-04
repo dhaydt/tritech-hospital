@@ -18,7 +18,7 @@
                                 <span class="nav-link-inner--text">{{ __('Pemeriksaan') }}</span>
                             </a>
                         </li>
-                        <li class="nav-item {{Request::is('profile')?'active':''}}">
+                        <li class="nav-item {{Request::is('profile/view')?'active':''}}">
                             <a class="nav-link nav-footer nav-link-icon d-flex flex-column align-items-center"
                                 href="{{ route('profile.view') }}">
                                 <i class="fas fa-user mb-1"></i>
