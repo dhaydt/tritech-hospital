@@ -20,7 +20,7 @@
     <!-- Extra details for Live View on GitHub Pages -->
 
     <!-- Icons -->
-    <link href="{{ asset('assets') }}/front-end/css/loginss.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/front-end/css/login.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/back-end/css/toastr.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="logo-session mt-4">
                         <div class="logo-avatar avatar">
-                            <img src="{{ asset('assets/front-end/img/logo.jpeg') }}" alt="">
+                            <img src="{{ asset('storage/company').'/'.$web_config['web_logo']->value }}" alt="">
                         </div>
                     </div>
                     <div class="card-body px-lg-5">
@@ -73,7 +73,7 @@
                                     <input class="pl-2 form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                         placeholder="Nomor Handphone" type="number" name="phone"
                                         value="{{ old('phone') }}" id="signinSrPhone" required
-                                        data-msg="Please enter a valid phone number.">
+                                        data-msg="Harap isi no Handphone.">
                                 </div>
                                 @if ($errors->has('phone'))
                                 <span class="invalid-feedback" style="display: block;" role="alert">
@@ -88,7 +88,7 @@
                                     </div>
                                     <input id="signupSrPassword"
                                         class="pl-2 js-toggle-password form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                        name="password" placeholder="{{ __('Password') }}" type="password" required
+                                        name="password" placeholder="{{ __('Password') }}" type="password" required data-msg="Harap isi no password."
                                         data-hs-toggle-password-options='{
                                         "target": "#changePassTarget",
                                         "defaultClass": "fa-eye-slash",
