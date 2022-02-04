@@ -20,7 +20,7 @@
     <!-- Extra details for Live View on GitHub Pages -->
 
     <!-- Icons -->
-    <link href="{{ asset('assets') }}/front-end/css/login.css" rel="stylesheet">
+    <link href="{{ asset('assets') }}/front-end/css/loginStyle.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/back-end/css/toastr.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
