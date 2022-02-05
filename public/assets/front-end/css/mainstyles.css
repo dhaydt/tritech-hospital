@@ -38,7 +38,7 @@ body .main-content {
 /* Header */
 
 .nav-mobile {
-    background-color: var(--secondary-color);
+    background-color: #BFFCC6;
     position: fixed !important;
     top: 0;
     height: 55px;
@@ -68,7 +68,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--forth-color);
+    background-color: #C4FAF8;
 }
 
 .nav-footer span {
@@ -81,7 +81,7 @@ footer {
 }
 
 .nav-item.active a.nav-link.nav-link-icon {
-    color: var(--primary-color) !important;
+    color: #32DB46 !important;
 }
 
 /* home */
