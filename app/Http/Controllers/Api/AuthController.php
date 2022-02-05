@@ -42,7 +42,7 @@ class AuthController extends Controller
             }
 
             $tokenResult = $user->createToken('token-auth')->plainTextToken;
-            $respon = 'success';
+            $respon = 'sukses';
 
             return response()->json($respon, 200);
         }
