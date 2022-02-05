@@ -28,7 +28,7 @@ class DataController extends Controller
         $name = $check->customer->name;
         $datang = date('d-m-Y', strtotime($check->datang));
         $kembali = date('d-m-Y', strtotime($check->kembali));
-        $respon = '\''.$name.'\' '.$datang.'\' '.$kembali;
+        $respon = '\''.$name.'\' '.$datang.'\' '.$kembali.'\'';
         // dd($respon);
 
         return $respon;
