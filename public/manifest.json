@@ -1,15 +1,15 @@
 {
-    "name": "Laravel Package Tutorial",
-    "short_name": "LPT",
-    "start_url": "/index.php",
+    "name": "Pratama Bidan Ratna Dewi",
+    "short_name": "Mandiri",
+    "start_url": "/pasien",
     "background_color": "#6777ef",
-    "description": "Tutorial of Laravel Package",
+    "description": "Praktek Mandiri Bidan Ratna Dewi",
     "display": "fullscreen",
-    "theme_color": "#6777ef",
+    "theme_color": "#bffcc6",
     "icons": [
         {
             "src": "/assets/front-end/img/logo.jpeg",
-            "sizes": "512x512",
+            "sizes": "812x812",
             "type": "image/png",
             "purpose": "any maskable"
         }
