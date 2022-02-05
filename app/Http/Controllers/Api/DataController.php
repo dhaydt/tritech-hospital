@@ -49,7 +49,6 @@ class DataController extends Controller
         $address = $user->address;
         $phone = $user->phone;
         $respon = $name.'" '.$lahir.'" '.$address.'" '.$phone;
-        dd($respon);
 
         return response()->json($respon, 200);
     }
