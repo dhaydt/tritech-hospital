@@ -28,7 +28,7 @@ class DataController extends Controller
         $name = $check->customer->name;
         $datang = date('d-m-Y', strtotime($check->datang));
         $kembali = date('d-m-Y', strtotime($check->kembali));
-        $respon = $name.'" '.$datang.'" '.$kembali;
+        $respon = $name.'\' '.$datang.'\' '.$kembali;
         // dd($respon);
 
         return response()->json($respon, 200);
@@ -48,7 +48,8 @@ class DataController extends Controller
         $lahir = date('d-m-Y', strtotime($user->birth_date));
         $address = $user->address;
         $phone = $user->phone;
-        $respon = $name.'" '.$lahir.'" '.$address.'" '.$phone;
+        $respon = $name.'\' '.$lahir.'\' '.$address.'\' '.$phone;
+        // dd($respon);
 
         return response()->json($respon, 200);
     }
