@@ -65,11 +65,32 @@ class AdminController extends Controller
             'image' => 'profile.png',
             'birth_date' => $request['birthdate'],
             'address' => $request['address'],
-            'password' => bcrypt('1234'),
+            'password' => bcrypt('5758'),
         ]);
 
         Toastr::success('Pasien successfully created');
 
         return redirect()->back();
+    }
+
+    public function editCustomer(Request $request)
+    {
+        // dd($request);
+        $data = [
+            'name' => $request['name'],
+            'phone' => $request['phone'],
+            'address' => $request['address'],
+            'birth_date' => $request['birth'],
+        ];
+        if (auth('admin')->check()) {
+            Customer::where(['id' => $request['id']])->update($data);
+            Toastr::info('Data berhasil diubah');
+
+            return redirect()->back();
+        } else {
+            Toastr::error('Gagal mengubah data');
+
+            return redirect()->back();
+        }
     }
 }

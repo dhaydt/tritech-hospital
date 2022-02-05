@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/user_admin', [UserController::class, 'index'])->name('userAdmin');
         Route::post('/add_admin', [AdminController::class, 'index'])->name('userAdminAdd');
         Route::post('/add_customer', [AdminController::class, 'addCustomer'])->name('addCustomer');
+        Route::post('/edit_customer', [AdminController::class, 'editCustomer'])->name('editCustomer');
 
         // Checkup
         Route::prefix('checkup')->name('checkup.')->group(function () {
