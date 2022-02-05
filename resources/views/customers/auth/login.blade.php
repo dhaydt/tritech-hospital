@@ -8,6 +8,11 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- PWA -->
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{ asset('assets/front-end/img/logo.jpeg') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+
     <title>@yield('title')</title>
     <!-- Favicon -->
     <link href="{{ asset('storage/company/'.$web_config['fav_icon']->value) }}" rel="icon" type="image/png">
@@ -178,6 +183,14 @@
             $.HSCore.components.HSValidation.init($(this));
         });
     });
+    </script>
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
     </script>
 </body>
 

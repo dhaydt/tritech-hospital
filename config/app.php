@@ -174,6 +174,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Amirami\Localizator\ServiceProvider::class,
+        Ladumor\LaravelPwa\PWAServiceProvider::class,
     ],
 
     /*
@@ -230,5 +231,6 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facades::class,
         'Helper' => \App\CPU\Helpers::class,
         'ImageManager' => \App\CPU\ImageManager::class,
+        'LaravelPwa' => \Ladumor\LaravelPwa\LaravelPwa::class,
     ],
 ];

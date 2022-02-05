@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5ead79cbf3a5cb641420dabd564175c021acb916',
+        'reference' => '6ee0a014e2b50b80fd2ac4d4e8f05fef1e8aed27',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -421,6 +421,15 @@
                 0 => '*',
             ),
         ),
+        'ladumor/laravel-pwa' => array(
+            'pretty_version' => 'v0.0.2',
+            'version' => '0.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ladumor/laravel-pwa',
+            'aliases' => array(),
+            'reference' => '063af4928d4a39c1b4c0b90811026193446d9fcd',
+            'dev_requirement' => false,
+        ),
         'laravel-frontend-presets/argon' => array(
             'pretty_version' => 'v1.1.1',
             'version' => '1.1.1.0',
@@ -445,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5ead79cbf3a5cb641420dabd564175c021acb916',
+            'reference' => '6ee0a014e2b50b80fd2ac4d4e8f05fef1e8aed27',
             'dev_requirement' => false,
         ),
         'laravel/legacy-factories' => array(
