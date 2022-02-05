@@ -17,18 +17,14 @@ class AuthController extends Controller
         ]);
 
         if ($validate->fails()) {
-            $respon = [
-                'No HP & password diperlukan',
-            ];
+            $respon = 'No HP & password diperlukan';
 
             return response()->json($respon, 400);
         } else {
             $user = Customer::where('phone', $request['phone'])->first();
 
             if (!$user) {
-                $respon = [
-                    'No handphone salah',
-                ];
+                $respon = 'No handphone salah';
 
                 return response()->json($respon, 400);
             }
@@ -36,9 +32,7 @@ class AuthController extends Controller
             $credentials = request(['phone', 'password']);
 
             if (!auth('customer')->attempt($credentials)) {
-                $respon = [
-                    'pin salah',
-                ];
+                $respon = 'pin salah';
 
                 return response()->json($respon, 401);
             }
@@ -48,9 +42,7 @@ class AuthController extends Controller
             }
 
             $tokenResult = $user->createToken('token-auth')->plainTextToken;
-            $respon = [
-                'success',
-            ];
+            $respon = 'success';
 
             return response()->json($respon, 200);
         }
