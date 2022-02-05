@@ -11,9 +11,10 @@ class DataController extends Controller
 {
     public function checkup(Request $request)
     {
-        $user = auth('sanctum')->id();
+        // dd($request);
+        $user = Customer::where('phone', $request['phone'])->first();
         // $user = Customer::where('phone', $request['phone'])->first();
-        $check = Checkup::with('customer')->where('pasien_id', $user)->orderby('created_at', 'DESC')->first();
+        $check = Checkup::with('customer')->where('pasien_id', $user->id)->orderby('created_at', 'DESC')->first();
         if (!$check) {
             $respon = [
                 'response' => 'belum ada data pemeriksaan',
@@ -34,7 +35,7 @@ class DataController extends Controller
 
     public function profile(Request $request)
     {
-        $user = auth('sanctum')->user();
+        $user = Customer::where('phone', $request['phone'])->first();
         // $user = Customer::where('phone', $request['phone'])->first();
         // $check = Checkup::with('customer')->where('pasien_id', $user)->orderby('created_at', 'DESC')->first();
         if (!$user) {

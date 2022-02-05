@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login']);
+Route::get('/pemeriksaan', [DataController::class, 'checkup']);
+Route::get('/profile', [DataController::class, 'profile']);
 
-Route::middleware('auth:sanctum')->get('/pemeriksaan', [DataController::class, 'checkup']);
-Route::middleware('auth:sanctum')->get('/profile', [DataController::class, 'profile']);
+// Route::middleware('auth:sanctum')->get('/pemeriksaan', [DataController::class, 'checkup']);
+// Route::middleware('auth:sanctum')->get('/profile', [DataController::class, 'profile']);
 
 // Route::middleware('auth:sanctum')->name('profile.')->group(function () {
 //     Route::get('/profile', [AuthController::class, 'login']);
