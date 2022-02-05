@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         if ($validate->fails()) {
             $respon = [
-                'response' => 'No HP & password diperlukan',
+                'No HP & password diperlukan',
             ];
 
             return response()->json($respon, 400);
@@ -27,7 +27,7 @@ class AuthController extends Controller
 
             if (!$user) {
                 $respon = [
-                    'response' => 'No handphone salah',
+                    'No handphone salah',
                 ];
 
                 return response()->json($respon, 400);
@@ -37,7 +37,7 @@ class AuthController extends Controller
 
             if (!auth('customer')->attempt($credentials)) {
                 $respon = [
-                    'response' => 'pin salah',
+                    'pin salah',
                 ];
 
                 return response()->json($respon, 401);
@@ -49,7 +49,7 @@ class AuthController extends Controller
 
             $tokenResult = $user->createToken('token-auth')->plainTextToken;
             $respon = [
-                'response' => 'success',
+                'success',
             ];
 
             return response()->json($respon, 200);
