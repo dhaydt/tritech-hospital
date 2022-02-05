@@ -14,6 +14,13 @@ class DataController extends Controller
         // dd($request);
         $user = Customer::where('phone', $request['phone'])->first();
         // $user = Customer::where('phone', $request['phone'])->first();
+        if (!$user) {
+            $respon = [
+                'response' => 'pasien tidak ditemukan',
+            ];
+
+            return response()->json($respon, 200);
+        }
         $check = Checkup::with('customer')->where('pasien_id', $user->id)->orderby('created_at', 'DESC')->first();
         if (!$check) {
             $respon = [
