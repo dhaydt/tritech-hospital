@@ -15,26 +15,20 @@ class DataController extends Controller
         $user = Customer::where('phone', $request['phone'])->first();
         // $user = Customer::where('phone', $request['phone'])->first();
         if (!$user) {
-            $respon = [
-                'response' => 'pasien tidak ditemukan',
-            ];
+            $respon = 'pasien tidak ditemukan';
 
             return response()->json($respon, 200);
         }
         $check = Checkup::with('customer')->where('pasien_id', $user->id)->orderby('created_at', 'DESC')->first();
         if (!$check) {
-            $respon = [
-                'response' => 'belum ada data pemeriksaan',
-            ];
+            $respon = 'belum ada data pemeriksaan';
 
             return response()->json($respon, 200);
         }
         $name = $check->customer->name;
         $datang = date('d-m-Y', strtotime($check->datang));
         $kembali = date('d-m-Y', strtotime($check->kembali));
-        $respon = [
-            'response' => $name.', '.$datang.', '.$kembali,
-        ];
+        $respon = $name.', '.$datang.', '.$kembali;
         // dd($respon);
 
         return response()->json($respon, 200);
@@ -46,9 +40,7 @@ class DataController extends Controller
         // $user = Customer::where('phone', $request['phone'])->first();
         // $check = Checkup::with('customer')->where('pasien_id', $user)->orderby('created_at', 'DESC')->first();
         if (!$user) {
-            $respon = [
-                'response' => 'belum ada data',
-            ];
+            $respon = 'belum ada data';
 
             return response()->json($respon, 200);
         }
@@ -56,9 +48,7 @@ class DataController extends Controller
         $lahir = date('d-m-Y', strtotime($user->birth_date));
         $address = $user->address;
         $phone = $user->phone;
-        $respon = [
-            'response' => $name.', '.$lahir.', '.$address.', '.$phone,
-        ];
+        $respon = $name.', '.$lahir.', '.$address.', '.$phone;
         // dd($respon);
 
         return response()->json($respon, 200);
