@@ -184,6 +184,7 @@
         });
     });
     </script>
+
     <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if (!navigator.serviceWorker.controller) {
