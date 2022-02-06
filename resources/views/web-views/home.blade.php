@@ -8,7 +8,7 @@
                 @foreach ($cat as $c)
                 <div class="col-4 px-2">
                     <div class="card menu-card mb-3">
-                        <a href="{{ route('content.view', ['id' => $c->id]) }}" class="img-menu">
+                        <a href="{{ route('checkup-cat', ['id' => $c->id]) }}" class="img-menu">
                             <img src="{{ asset('storage/category').'/'.$c['image'] }}" class="card-img-top" alt="menu-img">
                         </a>
                         <div class="card-body px-2 py-1 text-center d-flex align-items-center justify-content-center">

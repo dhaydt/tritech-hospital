@@ -1,7 +1,7 @@
 <nav class="navbar p-2 nav-mobile navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container-fluid mx-auto justify-content-center">
         <div class="row w-100">
-            <div class="col-12 d-flex justify-content-center page-title">
+            <div class="col-12 d-flex justify-content-center page-title text-center">
                 @if (session()->get('page-title') == "home")
                 <div class="row">
                     <div class="col-12 text-center title-div d-flex flex-column">

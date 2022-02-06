@@ -57,6 +57,7 @@ Route::prefix('content')->name('content.')->group(function () {
 });
 
 Route::get('/checkup', [WebController::class, 'checkup'])->name('checkup');
+Route::get('/checkup/{id}', [WebController::class, 'checkupSingle'])->name('checkup-cat');
 
 // Share Controller
 Route::post('image-upload', [SharedController::class, 'imageUpload'])->name('image-upload');
