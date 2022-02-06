@@ -23,7 +23,7 @@
                     @if (isset($d->kembali))
                     <div class="field-group">
                         <span class="field-title">Pemeriksaan kembali</span><br>
-                        <h3 class="field-content badge badge-success">{{ date('d-m-Y', strtotime($d->kembali)) }}</h3>
+                        <h3 class="field-content badge badge-success">{{ date('d M Y', strtotime($d->kembali)) }}</h3>
                     </div>
                     @else
                     <div class="field-group">
