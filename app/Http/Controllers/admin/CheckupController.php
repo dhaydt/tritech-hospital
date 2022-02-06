@@ -51,21 +51,17 @@ class CheckupController extends Controller
         'pasien_id.required' => 'Pilih satu pasien!',
         'chat.required' => 'Pilih jenis layanan!',
     ]);
-        // dd($c);
+        // dd($request);
         foreach ($request['chat'] as $c) {
-            $checkup = new Checkup();
+            if ($c) {
+                $checkup = new Checkup();
 
-            $checkup->pasien_id = $request['pasien_id'];
-            $checkup->datang = Carbon::now();
-            $checkup->category = $c;
-            $checkup->save();
+                $checkup->pasien_id = $request['pasien_id'];
+                $checkup->datang = Carbon::now();
+                $checkup->category = $c;
+                $checkup->save();
+            }
         }
-
-        $checkup = new Checkup();
-
-        $checkup->pasien_id = $request['pasien_id'];
-        $checkup->datang = Carbon::now();
-        $checkup->save();
         Toastr::success('Pasien berhasil di daftarkan');
 
         return back();

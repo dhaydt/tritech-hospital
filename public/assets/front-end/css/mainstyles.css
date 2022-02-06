@@ -104,6 +104,25 @@ footer {
     width: 100%;
 }
 
+/* menu */
+.card.menu-card{
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.img-menu{
+    height: 75px;
+}
+.img-menu img {
+    height: 100%;
+}
+
+.menu-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
 /* kontent view */
 .con-content {
     padding: 10px;

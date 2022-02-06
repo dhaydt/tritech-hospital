@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Checkup;
 use App\Models\Content;
 use Illuminate\Http\Request;
@@ -16,10 +17,11 @@ class WebController extends Controller
         }
 
         $blog = Content::orderBy('id', 'DESC')->get();
+        $cat = category::orderBy('id', 'DESC')->get();
 
         session()->put('page-title', 'home');
 
-        return view('web-views.home', compact('blog'));
+        return view('web-views.home', compact('blog', 'cat'));
     }
 
     public function content($id)
