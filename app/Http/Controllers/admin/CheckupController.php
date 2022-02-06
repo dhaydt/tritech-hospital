@@ -14,7 +14,6 @@ class CheckupController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request);
         $pasien = Customer::get();
         $query_param = [];
         $start = $request['start-date'];

@@ -65,10 +65,11 @@ class UserController extends Controller
 
                 return back();
             }
+            $fil = str_replace(',', ' ', $request->address);
             $userDetails = [
                 'name' => $request->name,
                 'phone' => $request->phone,
-                'address' => $request->address,
+                'address' => $fil,
                 'password' => strlen($request->password) > 3 ? bcrypt($request->password) : auth('customer')->user()->password,
             ];
         } else {

@@ -34,7 +34,7 @@ class AdminController extends Controller
             'password' => bcrypt($request['password']),
         ]);
 
-        Toastr::success('Admin successfully created');
+        Toastr::success('Admin sukses ditambahkan');
 
         return redirect()->back();
     }
@@ -46,7 +46,7 @@ class AdminController extends Controller
         $admin = Customer::where('phone', $request->phone)->first();
         // dd(isset($admin));
         if (isset($admin) == true) {
-            Toastr::warning('Phone already exist');
+            Toastr::warning('No handphone sudah ada');
 
             return redirect()->back();
         }
@@ -58,17 +58,17 @@ class AdminController extends Controller
             // 'email' => 'required|email|unique:admins',
             // 'password' => 'required|min:4|same:c_password',
         ]);
-
+        $fil = str_replace(',', ' ', $request['address']);
         $admin = Customer::create([
             'name' => $request['name'],
             'phone' => $request->phone,
             'image' => 'profile.png',
             'birth_date' => $request['birthdate'],
-            'address' => $request['address'],
+            'address' => $fil,
             'password' => bcrypt('5758'),
         ]);
 
-        Toastr::success('Pasien successfully created');
+        Toastr::success('Pasien berhasil ditambahkan');
 
         return redirect()->back();
     }
@@ -76,10 +76,11 @@ class AdminController extends Controller
     public function editCustomer(Request $request)
     {
         // dd($request);
+        $fil = str_replace(',', ' ', $request['address']);
         $data = [
             'name' => $request['name'],
             'phone' => $request['phone'],
-            'address' => $request['address'],
+            'address' => $fil,
             'birth_date' => $request['birth'],
         ];
         if (auth('admin')->check()) {
