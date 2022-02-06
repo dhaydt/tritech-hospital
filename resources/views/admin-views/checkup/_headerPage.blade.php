@@ -66,7 +66,7 @@
                                                     <?php $no = 1?>
                                                     @foreach ($cat as $c)
                                                     <div class="form-check" style="margin-left: 15px">
-                                                        <input class="form-check-input" name="chat[]" type="checkbox" value="{{ $c->name }}" id="flexCheckDefault">
+                                                        <input class="form-check-input" name="chat[]" type="checkbox" value="{{ $c->id }}" id="flexCheckDefault">
                                                         <label class="form-check-label" for="flexCheckDefault">
                                                             {{ $c->name }}
                                                         </label>

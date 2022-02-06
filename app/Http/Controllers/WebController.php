@@ -41,7 +41,8 @@ class WebController extends Controller
             return redirect()->route(('customersLogin'));
         }
         $id = auth('customer')->user()->id;
-        $data = Checkup::with('customer')->latest('created_at')->where('pasien_id', $id)->first();
+        $data = Checkup::with('customer')->latest('created_at')->where('pasien_id', $id)->get();
+        // dd($data);
         session()->put('page-title', 'Pemeriksaan');
 
         return view('web-views.checkup', compact('data'));

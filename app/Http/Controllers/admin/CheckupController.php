@@ -54,11 +54,13 @@ class CheckupController extends Controller
         // dd($request);
         foreach ($request['chat'] as $c) {
             if ($c) {
+                $name = category::where('id', $c)->first();
                 $checkup = new Checkup();
 
                 $checkup->pasien_id = $request['pasien_id'];
+                $checkup->cat_id = $c;
                 $checkup->datang = Carbon::now();
-                $checkup->category = $c;
+                $checkup->category = $name->name;
                 $checkup->save();
             }
         }
