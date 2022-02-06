@@ -50,10 +50,10 @@
                             <tr class="text-center">
                                 <th scope="col" class="sort" data-sort="name">NO</th>
                                 <th scope="col" class="sort" data-sort="budget">Nama</th>
+                                <th scope="col" class="sort" data-sort="category">Layanan</th>
                                 <th scope="col" class="sort" data-sort="status">Telepon / HP</th>
                                 <th scope="col" class="sort" data-sort="status">Datang</th>
                                 <th scope="col" class="sort" data-sort="status">Kembali</th>
-                                <th scope="col" class="sort" data-sort="status">Alamat</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
                             </tr>
                         </thead>
@@ -113,6 +113,9 @@
                                     <span class="status">{{ $ad->customer->name }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
+                                    <span class="status">{{ $ad->category }}</span>
+                                </td>
+                                <td class="budget text-center capitalize">
                                     <span class="status">{{ $ad->customer->phone }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
@@ -127,9 +130,6 @@
                                     <span class="status badge badge-success">{{ date('d M Y',strtotime($ad->kembali))
                                         }}</span>
                                     @endif
-                                </td>
-                                <td class="budget text-center capitalize">
-                                    <span class="status">{{ $ad->customer->address }}</span>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center justify-content-evenly action-col">

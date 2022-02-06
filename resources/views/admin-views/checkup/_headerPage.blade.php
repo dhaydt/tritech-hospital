@@ -61,13 +61,17 @@
                                                         {{-- <input class="pl-2 form-control" name="name" placeholder="Full Name" type="text"> --}}
                                                     </div>
                                                 </div>
-                                                <div class="form-group mb-3 pasien-form">
-                                                    <div class="input-group input-group-merge input-group-alternative">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text w-100 bg-grey text-white">Keluhan</span>
-                                                        </div>
-                                                        <textarea class="pl-2 form-control" name="keluhan" ></textarea>
+                                                <div class="form-group mb-3 pasien-form text-left ml-1">
+                                                    <label class="form-label">Jenis layanan</label>
+                                                    <?php $no = 1?>
+                                                    @foreach ($cat as $c)
+                                                    <div class="form-check" style="margin-left: 15px">
+                                                        <input class="form-check-input" name="chat[]" type="checkbox" value="{{ $c->name }}" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            {{ $c->name }}
+                                                        </label>
                                                     </div>
+                                                    @endforeach
                                                 </div>
                                                 {{-- <div class="form-group mb-3 pasien-form">
                                                     <div class="input-group input-group-merge input-group-alternative">

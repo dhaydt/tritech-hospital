@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\Checkup;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
@@ -33,17 +34,33 @@ class CheckupController extends Controller
         } else {
             $orders = Checkup::with(['customer']);
         }
+        $cat = category::get();
 
         session()->put('title', 'Checkup List');
         $admin = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
 
-        return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien'));
+        return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien', 'cat'));
     }
 
     public function store(Request $request)
     {
-        $pasien = Customer::find($request['pasien_id']);
-        // dd($pasien);
+        $request->validate([
+        'pasien_id' => 'required',
+        'chat' => 'required',
+    ], [
+        'pasien_id.required' => 'Pilih satu pasien!',
+        'chat.required' => 'Pilih jenis layanan!',
+    ]);
+        // dd($c);
+        foreach ($request['chat'] as $c) {
+            $checkup = new Checkup();
+
+            $checkup->pasien_id = $request['pasien_id'];
+            $checkup->datang = Carbon::now();
+            $checkup->category = $c;
+            $checkup->save();
+        }
+
         $checkup = new Checkup();
 
         $checkup->pasien_id = $request['pasien_id'];
