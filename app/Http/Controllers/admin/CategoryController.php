@@ -5,122 +5,137 @@ namespace App\Http\Controllers\admin;
 use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\category;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $query_param = [];
         $search = $request['search'];
         if ($request->has('search')) {
+            // dd($request);
             $key = explode(' ', $request['search']);
-            $categories = Category::where(function ($q) use ($key) {
+            $admin = category::where(function ($q) use ($key) {
                 foreach ($key as $value) {
                     $q->orWhere('name', 'like', "%{$value}%");
                 }
             });
             $query_param = ['search' => $request['search']];
+            $admin = $admin->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
+
+            return view('admin-views.category.list', compact('admin', 'search'));
         } else {
-            $categories = Category::where(['position' => 0]);
+            $admin = category::get();
         }
 
-        $categories = $categories->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
-        session()->put('title', 'Categories');
+        session()->put('title', 'Kategori');
+        // dd(count($admin) > 0);
+        if (count($admin) > 0) {
+            $admin = $admin->last()->paginate(Helpers::pagination_limit())->appends($query_param);
 
-        return view('admin-views.category.view', compact('categories', 'search'));
+            // return view('admin-views.category.list', compact('admin', 'search'));
+        }
+
+        return view('admin-views.category.list', compact('admin', 'search'));
     }
 
-    public function fetch(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'required',
+            // 'desc' => 'required',
         ], [
-            'name.required' => 'Category name is required!',
-            'image.required' => 'Category image is required!',
+            'name.required' => 'Anda lupa mengisi nama kategori!',
+            // 'desc.required' => 'Description Content is required!',
         ]);
+        $checkup = new category();
 
-        $category = new Category();
-        $category->name = $request->name[array_search('en', $request->lang)];
-        $category->slug = Str::slug($request->name[array_search('en', $request->lang)]);
-        $category->icon = ImageManager::upload('category/', 'png', $request->file('image'));
-        $category->parent_id = 0;
-        $category->position = 0;
-        $category->save();
+        $checkup->name = $request['name'];
+        $checkup->image = ImageManager::upload('category/', 'png', $request->file('image'));
 
-        $data = [];
-        foreach ($request->lang as $index => $key) {
-            if ($request->name[$index] && $key != 'en') {
-                array_push($data, [
-                    'translationable_type' => 'App\Model\Category',
-                    'translationable_id' => $category->id,
-                    'locale' => $key,
-                    'key' => 'name',
-                    'value' => $request->name[$index],
-                ]);
-            }
-        }
-
-        Toastr::success('Category added successfully!');
+        $checkup->save();
+        Toastr::success('Kategori berhasil ditambahkan');
 
         return back();
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        $category = category::withoutGlobalScopes()->find($id);
-
-        return view('admin-views.category.category-edit', compact('category'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
-        $category = Category::find($request->id);
-        $category->name = $request->name[array_search('en', $request->lang)];
-        $category->slug = Str::slug($request->name[array_search('en', $request->lang)]);
-        if ($request->image) {
-            $category->icon = ImageManager::update('category/', $category->icon, 'png', $request->file('image'));
+        // dd($request);
+        $pasien = category::where('id', $request->id)->first();
+        $pasien->name = $request->name;
+        if ($request->file('image')) {
+            $pasien->image = ImageManager::update('category/', $pasien->image, 'png', $request->file('image'));
         }
-        $category->save();
-
-        Toastr::success('Category updated successfully!');
+        $pasien->save();
+        Toastr::success('Kategori berhasil diubah');
 
         return back();
     }
 
-    public function delete(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
     {
-        $categories = Category::where('parent_id', $request->id)->get();
-        if (!empty($categories)) {
-            foreach ($categories as $category) {
-                $categories1 = Category::where('parent_id', $category->id)->get();
-                if (!empty($categories1)) {
-                    foreach ($categories1 as $category1) {
-                        Category::destroy($category1->id);
-                    }
-                }
-                Category::destroy($category->id);
-            }
-        }
-        Category::destroy($request->id);
+        $pasien = category::where('id', $id)->first();
+        ImageManager::delete('/category'.'/'.$pasien->image);
+        $pasien->delete();
 
-        return response()->json();
-    }
-
-    public function status(Request $request)
-    {
-        $category = Category::find($request->id);
-        $category->home_status = $request->home_status;
-        $category->save();
-        Toastr::success('Service status updated!');
+        Toastr::success('Kategori berhasil dihapus');
 
         return back();
     }

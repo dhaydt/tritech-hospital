@@ -119,15 +119,26 @@
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.userCustomer', ['status' => 'all']) }}">
-                        <i class="ni ni-circle-08 text-blue"></i> {{ __('Pasien') }}
+                        <i class="ni ni-circle-08 text-orange"></i> {{ __('Pasien') }}
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ route('admin.userAdmin') }}">
-                        <i class="fas fa-users text-orange"></i> {{ __('User Admin') }}
+                        <i class="fas fa-users text-blue"></i> {{ __('User Admin') }}
                     </a>
                 </li>
             </ul>
+
+             <!-- Service Section -->
+             <h6 class="navbar-heading text-muted">Service Section</h6>
+             <!-- Navigation -->
+             <ul class="navbar-nav mb-md-3">
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('admin.category.list', ['status' => 'all']) }}">
+                         <i class="fas fa-th-large text-orange"></i> {{ __('Category') }}
+                     </a>
+                 </li>
+             </ul>
 
             <!-- Order Section -->
             <h6 class="navbar-heading text-muted">Config Section</h6>
