@@ -35,21 +35,47 @@ body .main-content {
     background-color: #f6f6f6;
 }
 
+.mt-content{
+    margin-top: 140px;
+}
 /* Header */
 
 .nav-mobile {
-    background-color: #BFFCC6;
     position: fixed !important;
     top: 0;
-    height: 55px;
+    height: 125px;
     left: 0;
     right: 0;
     z-index: 9;
 }
 
-.title-name{
-    color: var(--third-color);
+.bg-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.bg-nav img {
+    height: 100%;
+    width: 100%;
+}
+
+.title-welcome {
     font-size: 14px;
+    color: #000;
+    line-height: 2;
+}
+
+.title-app{
+    color: #096514;
+    font-weight: 600;
+}
+
+.title-name{
+    color: #000;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -68,7 +94,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #C4FAF8;
+    background-color: var(--secondary-color);
 }
 
 .nav-footer span {

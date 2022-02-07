@@ -14,7 +14,7 @@
                         <li class="nav-item {{Request::is('checkup')?'active':''}}">
                             <a class="nav-link nav-footer nav-link-icon d-flex flex-column align-items-center"
                                 href="{{ route('checkup') }}">
-                                <i class="fas fa-briefcase mb-1"></i>
+                                <i class="fas fa-briefcase-medical mb-1"></i>
                                 <span class="nav-link-inner--text">{{ __('Pemeriksaan') }}</span>
                             </a>
                         </li>

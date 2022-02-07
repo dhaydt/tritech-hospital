@@ -39,8 +39,8 @@
 
     <!-- Pull refresh plugin -->
     {{-- <link rel="stylesheet" href="{{ asset('assets/front-end/pull/mk-pullfresh.css') }}"> --}}
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script src="{{ asset('assets/front-end/js/onesignal.js') }}"></script>
+    {{-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script src="{{ asset('assets/front-end/js/onesignal.js') }}"></script> --}}
 </head>
 
 <body class="mb-0">
@@ -54,8 +54,12 @@
     <div class="main-content" id="main-content">
         <div class="row main-row mx-auto">
             <div class="col-12 p-0">
-                @if (!Route::is('home2') && !Route::is('content2'))
+                @if (!Route::is('home2') && !Route::is('content2') && !Route::is('home'))
+                @include('layouts.front-end.partials._header2')
+                @endif
+                @if (Route::is('home'))
                 @include('layouts.front-end.partials._header')
+                <div class="mt-content"></div>
                 @endif
                 <div class="div-content">
                     @yield('content')
