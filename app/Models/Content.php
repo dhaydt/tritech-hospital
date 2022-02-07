@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     use HasFactory;
+
+    public function category()
+    {
+        return $this->belongsTo(category::class, 'cat_id');
+    }
 }

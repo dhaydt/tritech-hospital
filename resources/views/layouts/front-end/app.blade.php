@@ -62,15 +62,18 @@
     <div class="main-content" id="main-content">
         <div class="row main-row mx-auto">
             <div class="col-12 p-0">
+                @if (!Route::is('home2'))
                 @include('layouts.front-end.partials._header')
+                @endif
                 <div class="div-content">
                     @yield('content')
                 </div>
             </div>
         </div>
     </div>
-
+    @if (!Route::is('home2'))
     @include('layouts.front-end.partials._footer')
+    @endif
 
     <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

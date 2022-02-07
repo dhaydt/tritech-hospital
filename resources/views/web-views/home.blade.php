@@ -3,6 +3,7 @@
 @section('content')
 <div class="container-fluid px-3 my-6">
     <div class="row">
+        @if (!Route::is('home2'))
         <div class="col-12 mb-3">
             <div class="row px-2">
                 @foreach ($cat as $c)
@@ -19,6 +20,7 @@
                 @endforeach
             </div>
         </div>
+        @endif
         <div class="col-12">
             <h4 class="section-title">
                 Edukasi bagi anda

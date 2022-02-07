@@ -53,8 +53,9 @@ class WebController extends Controller
         $data = Checkup::with('customer')->latest('created_at')->where('pasien_id', $id)->get();
         // dd($data);
         session()->put('page-title', 'Pemeriksaan');
+        $konten = [];
 
-        return view('web-views.checkup', compact('data'));
+        return view('web-views.checkup', compact('data', 'konten'));
     }
 
     public function checkupSingle($id)
