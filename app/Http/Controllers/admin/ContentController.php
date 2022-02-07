@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\Content;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -33,28 +34,32 @@ class ContentController extends Controller
             $admin = $admin->last()->paginate(Helpers::pagination_limit())->appends($query_param);
         }
         session()->put('title', 'Konten List');
+        $cat = category::get();
 
-        return view('admin-views.content.list', compact('admin', 'search'));
+        return view('admin-views.content.list', compact('admin', 'search', 'cat'));
     }
 
     public function add()
     {
-        return view('admin-views.content.addNew');
+        $cat = category::get();
+
+        return view('admin-views.content.addNew', compact('cat'));
     }
 
     public function store(Request $request)
     {
-        // dd($request->description);
+        // dd($request);
         $request->validate([
             'title' => 'required',
-            // 'desc' => 'required',
+            'category' => 'required',
         ], [
-            'title.required' => 'Title Content is required!',
-            // 'desc.required' => 'Description Content is required!',
+            'title.required' => 'Mohon isi judul konten',
+            'category.required' => 'Mohon isi kategori konten!',
         ]);
         $checkup = new Content();
 
         $checkup->title = $request['title'];
+        $checkup->cat_id = $request['category'];
         $checkup->description = $request->description;
         $checkup->image = ImageManager::upload('content/', 'png', $request->file('image'));
 

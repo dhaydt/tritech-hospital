@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('table-list', function () {return view('pages.tables'); })->name('table');
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
+Route::get('/getDate', [WebController::class, 'getKembali'])->name('getKembali');
 
 Route::prefix('content')->name('content.')->group(function () {
     Route::get('/content/{id}', [WebController::class, 'content'])->name('view');

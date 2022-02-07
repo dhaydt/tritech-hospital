@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\Checkup;
 use App\Models\Content;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     public function index()
     {
-        // dd(auth('customer')->user());
+        $user = auth('customer')->id();
         if (auth('customer')->user() == null) {
             return redirect()->route(('customersLogin'));
         }
@@ -22,6 +23,14 @@ class WebController extends Controller
         session()->put('page-title', 'home');
 
         return view('web-views.home', compact('blog', 'cat'));
+    }
+
+    public function getKembali()
+    {
+        $user = auth('customer')->id();
+        $date = Carbon::now()->format('Y-m-d');
+        $check = Checkup::where(['pasien_id' => $user, 'kembali' => $date])->get();
+        dd($check, $date);
     }
 
     public function content($id)

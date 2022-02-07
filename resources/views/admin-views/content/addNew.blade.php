@@ -23,7 +23,16 @@
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Judul konten">
+                        </div>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Category</label>
+                            <select name="category" class="form-select" aria-label="Default select example">
+                                <option selected value="">Pilih Kategori Konten</option>
+                                @foreach ($cat as $c)
+                                <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                @endforeach
+                              </select>
                         </div>
                         <div class="mb-3 d-flex">
                             <div class="col-md-6 pl-0">
