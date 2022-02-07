@@ -39,9 +39,6 @@
         height: 80px;
     }
 
-    .pasien-dialog {
-        margin-top: 30vh;
-    }
 </style>
 <div class="container-fluid mt--8">
 
@@ -54,6 +51,7 @@
                             <tr class="text-center">
                                 <th scope="col" class="sort" data-sort="name">NO</th>
                                 <th scope="col" class="sort" data-sort="budget">Judul</th>
+                                <th scope="col" class="sort" data-sort="category">Kategori</th>
                                 {{-- <th scope="col" class="sort" data-sort="status">Deskripsi</th> --}}
                                 <th scope="col" class="sort" data-sort="status">Image</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
@@ -83,6 +81,15 @@
                                                 <div class="mb-3">
                                                     <label for="title" class="form-label">Title</label>
                                                     <input type="text" class="form-control" id="title" value="{{ $ad->title }}" name="title">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="title" class="form-label">Category</label>
+                                                    <select name="category" class="form-select" aria-label="Default select example">
+                                                        <option selected value="{{ $ad->cat_id }}"> {{ $ad->category->name }}</option>
+                                                        @foreach ($cat as $c)
+                                                        <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                                        @endforeach
+                                                      </select>
                                                 </div>
                                                 <div class="mb-3 d-flex">
                                                     <div class="col-md-6 pl-0">
@@ -123,6 +130,9 @@
                                 <td class="text-center">{{ $no++ }}</td>
                                 <td class="budget text-center capitalize">
                                     <span class="status">{{ $ad->title }}</span>
+                                </td>
+                                <td class="budget text-center capitalize">
+                                    <span class="status">{{ $ad->category->name }}</span>
                                 </td>
                                 {{-- <td class="text-center capitalize">
                                     {!! $ad->description !!}

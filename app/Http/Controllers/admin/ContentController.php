@@ -27,7 +27,7 @@ class ContentController extends Controller
             });
             $query_param = ['search' => $request['search']];
         } else {
-            $admin = Content::get();
+            $admin = Content::with('category')->get();
         }
         $last = $admin->last();
         if (isset($last)) {
@@ -74,6 +74,7 @@ class ContentController extends Controller
         // dd($request);
         $pasien = Content::where('id', $request->id)->first();
         $pasien->title = $request->title;
+        $pasien->cat_id = $request->category;
         $pasien->description = $request->description;
         if ($request->file('image')) {
             $pasien->image = ImageManager::update('content/', $pasien->image, 'png', $request->file('image'));
