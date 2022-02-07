@@ -41,7 +41,6 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/front-end/pull/mk-pullfresh.css') }}"> --}}
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script src="{{ asset('assets/front-end/js/onesignal.js') }}"></script>
-
 </head>
 
 <body class="mb-0">
