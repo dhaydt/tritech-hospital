@@ -1,6 +1,9 @@
 @extends('layouts.front-end.app')
 
 @section('content')
+@if (Route::is('content2'))
+    <div class="mt--5"></div>
+@endif
 <div class="con-content pt-0 my-6 pb-2">
     <div class="row">
         <div class="col-12">

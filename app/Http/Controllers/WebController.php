@@ -45,9 +45,17 @@ class WebController extends Controller
 
     public function content($id)
     {
-        // if (auth('customer')->user() == null) {
-        //     return redirect()->route(('customersLogin'));
-        // }
+        if (auth('customer')->user() == null) {
+            return redirect()->route(('customersLogin'));
+        }
+        $blog = Content::where('id', $id)->first();
+        session()->put('page-title', 'Edukasi');
+
+        return view('web-views.content', compact('blog'));
+    }
+
+    public function content2($id)
+    {
         $blog = Content::where('id', $id)->first();
         session()->put('page-title', 'Edukasi');
 
