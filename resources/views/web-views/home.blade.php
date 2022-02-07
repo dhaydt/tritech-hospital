@@ -12,7 +12,7 @@
                         <a href="{{ route('checkup-cat', ['id' => $c->id]) }}" class="img-menu">
                             <img src="{{ asset('storage/category').'/'.$c['image'] }}" class="card-img-top" alt="menu-img">
                         </a>
-                        <div class="card-body px-2 py-1 text-center d-flex align-items-center justify-content-center">
+                        <div class="menu-cate">
                             <label class="menu-title mb-0">{{ $c->name }}</label>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
 </div>
 @endsection
 @push('script')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
         var maxHeight = 0;
 
@@ -51,5 +51,5 @@
 
         $('.menu-card').height(maxHeight);
         })
-    </script>
+    </script> --}}
 @endpush
