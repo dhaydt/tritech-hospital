@@ -66,9 +66,11 @@ class WebController extends Controller
         $ids = auth('customer')->id();
         $data = Checkup::with('customer')->latest('created_at')->where(['pasien_id' => $ids, 'cat_id' => $id])->get();
         // dd($data);
+        $konten = Content::where('cat_id', $id)->orderBy('created_at', 'DESC')->get();
+        // dd($konten, $id);
         session()->put('page-title', $check->name);
 
-        return view('web-views.checkup', compact('data'));
+        return view('web-views.checkup', compact('data', 'konten'));
     }
 
     public function checkout_complete(Request $request)

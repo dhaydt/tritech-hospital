@@ -42,7 +42,23 @@
                 </div>
             </div>
             @endif
-
+            @if (count($konten) > 0)
+            <div class="col-12">
+                <h4 class="section-title">
+                    Edukasi {{ session()->get('page-title') }}
+                </h4>
+                @foreach ($konten as $b)
+                <div class="card blog-card mb-3">
+                    <a href="{{ route('content.view', ['id' => $b->id]) }}" class="img-link">
+                        <img src="{{ asset('storage/content').'/'.$b['image'] }}" class="card-img-top" alt="blog-img">
+                    </a>
+                    <div class="card-body px-2 py-1">
+                        <h5 class="card-title">{{ $b->title }}</h5>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endif
         </div>
     </div>
 </div>
