@@ -33,7 +33,7 @@ Route::get('/storage-link', function () {
 Auth::routes();
 
 Route::get('/pasien', [WebController::class, 'index'])->name('home');
-Route::get('/pasien/home', [WebController::class, 'index'])->name('home2');
+Route::get('/pasien/home', [WebController::class, 'home2'])->name('home2');
 Route::get('/pasien/register', [RegisterController::class, 'index'])->name('customersReg');
 Route::post('/pasien/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
 Route::get('/pasien/login', [LoginController::class, 'index'])->name('customersLogin');

@@ -25,6 +25,16 @@ class WebController extends Controller
         return view('web-views.home', compact('blog', 'cat'));
     }
 
+    public function home2()
+    {
+        $blog = Content::orderBy('id', 'DESC')->get();
+        $cat = category::orderBy('id', 'DESC')->get();
+
+        session()->put('page-title', 'home');
+
+        return view('web-views.home2', compact('blog', 'cat'));
+    }
+
     public function getKembali()
     {
         $user = auth('customer')->id();
