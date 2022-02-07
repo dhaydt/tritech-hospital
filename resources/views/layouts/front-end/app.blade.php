@@ -40,14 +40,7 @@
     <!-- Pull refresh plugin -->
     {{-- <link rel="stylesheet" href="{{ asset('assets/front-end/pull/mk-pullfresh.css') }}"> --}}
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-        OneSignal.init({
-        appId: "d0014c73-9879-4a8f-a621-ccd7f13bd552",
-        });
-    });
-    </script>
+    <script src="{{ asset('assets/front-end/js/onesignal.js') }}"></script>
 
 </head>
 
