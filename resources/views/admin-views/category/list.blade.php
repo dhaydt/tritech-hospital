@@ -85,7 +85,7 @@
                                             <div class="mb-3 d-flex">
                                                 <div class="col-md-6 pl-0">
                                                     <div class="custom-file" style="text-align: left">
-                                                        <input type="file" name="image" id="fbimageFileUploaderss"
+                                                        <input type="file" name="image" id="editCat"
                                                             class="custom-file-input"
                                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                                         <label class="custom-file-label"
@@ -95,7 +95,7 @@
                                                 <div class="col-md-6">
                                                     <center>
                                                         <img style="width: auto;border: 1px solid; border-radius: 10px; max-height:200px; max-width:100%;"
-                                                            id="fbImageviewers"
+                                                            id="editCatView"
                                                             src="{{ asset('storage/category/'.$ad->image) }}"
                                                             alt="banner image" />
                                                     </center>
@@ -198,7 +198,7 @@
     </script>
     @push('script')
     <script>
-        $("#fbimageFileUploaderss").change(function () {
+        $("#editCat").change(function () {
             fbimagereadURL(this);
         });
 
@@ -207,7 +207,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#fbImageviewers').attr('src', e.target.result);
+                    $('#editCatView').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
