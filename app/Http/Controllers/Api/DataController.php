@@ -64,7 +64,7 @@ class DataController extends Controller
         if ($check->kembali) {
             $kembali = date('d-m-Y', strtotime($check->kembali));
         } else {
-            $kembali = 'Tidak ada tanggal kembali';
+            $kembali = '-';
         }
         $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali;
 
