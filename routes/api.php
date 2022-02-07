@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/pemeriksaan', [DataController::class, 'checkup']);
 Route::get('/profile', [DataController::class, 'profile']);
+Route::get('/category', [DataController::class, 'categoryCheckup']);
 
 // Route::middleware('auth:sanctum')->get('/pemeriksaan', [DataController::class, 'checkup']);
 // Route::middleware('auth:sanctum')->get('/profile', [DataController::class, 'profile']);

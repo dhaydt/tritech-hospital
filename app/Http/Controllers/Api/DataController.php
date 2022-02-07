@@ -53,4 +53,22 @@ class DataController extends Controller
 
         return $respon;
     }
+
+    public function categoryCheckup(Request $request)
+    {
+        $user = Customer::where('phone', $request['phone'])->first();
+        $check = Checkup::where(['pasien_id' => $user->id, 'cat_id' => $request['cat_id']])->latest('datang')->first();
+        $layanan = $check->category;
+        $nama = $user->name;
+        $datang = date('d-m-Y', strtotime($check->datang));
+        if ($check->kembali) {
+            $kembali = date('d-m-Y', strtotime($check->kembali));
+        } else {
+            $kembali = 'Tidak ada tanggal kembali';
+        }
+        $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali;
+
+        return $resp;
+        // dd($resp);
+    }
 }
