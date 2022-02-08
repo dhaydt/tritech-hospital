@@ -36,9 +36,24 @@
             </div>
             @endforeach
             @else
-            <div class="row">
-                <div class="col-12 justify-content-center d-flex align-items-center">
-                    <h5 class="text-bold mb-0">Belum ada pemeriksaan</h5>
+            <div class="card card-checkup mb-3">
+                <div class="card-body p-2">
+                    <div class="field-group">
+                        <span class="field-title">Nama Layanan</span><br>
+                        <h5 class="field-content">{{ session()->get('page-title') }}</h5>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-title">Nama Lengkap</span><br>
+                        <h5 class="field-content">{{ auth('customer')->user()->name }}</h5>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-title">Tanggal pemeriksaan</span><br>
+                        <h5 class="field-content">-</h5>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-title">Pemeriksaan kembali</span><br>
+                        <h5 class="field-content">-</h5>
+                    </div>
                 </div>
             </div>
             @endif
