@@ -73,9 +73,14 @@ class DataController extends Controller
         // dd($resp);
     }
 
-    public function content()
+    public function content(Request $request)
     {
-        $data = Content::orderby('id', 'DESC')->get();
+        // dd($request);
+        if ($request['category']) {
+            $data = Content::where('cat_id', $request['category'])->orderby('id', 'DESC')->get();
+        } else {
+            $data = Content::orderby('id', 'DESC')->get();
+        }
         function append_string($inc, $kontent)
         {
             $inc .= $kontent;
