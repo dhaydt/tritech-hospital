@@ -148,12 +148,15 @@ footer {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    max-width: 70%;
 }
 
 .menu-title {
     font-size: 12px;
     font-weight: 600;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
 }
 
 h4.section-title {
