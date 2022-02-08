@@ -18,7 +18,7 @@ class WebController extends Controller
         }
 
         $blog = Content::orderBy('id', 'DESC')->get();
-        $cat = category::orderBy('id', 'DESC')->get();
+        $cat = category::orderBy('id', 'ASC')->get();
 
         session()->put('page-title', 'home');
 
