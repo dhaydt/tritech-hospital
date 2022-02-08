@@ -85,7 +85,7 @@ class DataController extends Controller
         }
         $inc = '';
         foreach ($data as $d) {
-            $img = env('APP_URL').$d->image;
+            $img = env('APP_URL').'storage/content/'.$d->image;
             $title = $d->title;
             $create = $d->created_at;
             $createby = 'Admin';
