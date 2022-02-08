@@ -196,6 +196,23 @@ h4.section-title {
     -webkit-box-shadow: 3px 2px 7px -3px rgba(84, 74, 74, 0.85);
     -moz-box-shadow: 3px 2px 7px -3px rgba(84, 74, 74, 0.85);
 }
+
+.card.card-checkup .card-body{
+    z-index: 1;
+}
+
+.bg-checkup {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bg-checkup img {
+    height: 100%;
+    width: 100%;
+}
 .field-title {
     color: #757171;
     font-weight: 400;

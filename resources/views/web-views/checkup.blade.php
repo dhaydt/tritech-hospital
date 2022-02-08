@@ -7,6 +7,9 @@
             @if (count($data) > 0)
             @foreach ($data as $d)
             <div class="card card-checkup mb-3">
+                <div class="bg-checkup">
+                    <img src="{{ asset('assets/front-end/img/checkup-bg.jpeg') }}" alt="">
+                </div>
                 <div class="card-body p-2">
                     <div class="field-group">
                         <span class="field-title">Nama Layanan</span><br>
@@ -37,6 +40,9 @@
             @endforeach
             @else
             <div class="card card-checkup mb-3">
+                <div class="bg-checkup">
+                    <img src="{{ asset('assets/front-end/img/checkup-bg.jpeg') }}" alt="">
+                </div>
                 <div class="card-body p-2">
                     <div class="field-group">
                         <span class="field-title">Nama Layanan</span><br>
