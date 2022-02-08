@@ -1,9 +1,9 @@
 {
-    "name": "Pratama Bidan Ratna Dewi",
-    "short_name": "Mandiri",
-    "start_url": "/pasien",
+    "name": "Bidan Ratna Dewi",
+    "short_name": "BRD",
+    "start_url": "/",
     "background_color": "#6777ef",
-    "description": "Praktek Mandiri Bidan Ratna Dewi",
+    "description": "Praktek Bidan Ratna Dewi",
     "display": "fullscreen",
     "theme_color": "#bffcc6",
     "icons": [

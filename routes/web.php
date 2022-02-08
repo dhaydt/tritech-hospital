@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
+    return redirect()->route('home');
 });
 
 Route::get('/storage-link', function () {
@@ -35,7 +35,7 @@ Auth::routes();
 Route::get('/pasien/home', [WebController::class, 'home2'])->name('home2');
 Route::get('/content2/{id}', [WebController::class, 'content2'])->name('content2');
 
-Route::get('/pasien', [WebController::class, 'index'])->name('home');
+Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/pasien/register', [RegisterController::class, 'index'])->name('customersReg');
 Route::post('/pasien/register', [RegisterController::class, 'submit'])->name('customersReg_submit');
 Route::get('/pasien/login', [LoginController::class, 'index'])->name('customersLogin');
