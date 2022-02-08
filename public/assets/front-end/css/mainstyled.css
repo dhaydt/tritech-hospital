@@ -147,14 +147,14 @@ footer {
 .menu-cate{
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
 }
 
 .menu-title {
     font-size: 12px;
     font-weight: 600;
     position: absolute;
-    right: 0;
+    left: 0;
     bottom: 0;
 
 }
