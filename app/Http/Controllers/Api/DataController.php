@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Checkup;
+use App\Models\Content;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -70,5 +71,30 @@ class DataController extends Controller
 
         return $resp;
         // dd($resp);
+    }
+
+    public function content()
+    {
+        $data = Content::orderby('id', 'DESC')->get();
+        function append_string($inc, $kontent)
+        {
+            $inc .= $kontent;
+
+            // Returning the result
+            return $inc;
+        }
+        $inc = '';
+        foreach ($data as $d) {
+            $img = env('APP_URL').$d->image;
+            $title = $d->title;
+            $create = $d->created_at;
+            $createby = 'Admin';
+            $desc = $d->description;
+            $kontent = $img.' | '.$title.' | '.$create.' | '.$createby.' | '.$desc.', ';
+            $inc = append_string($inc, $kontent);
+        }
+        // dd($inc);
+
+        return $inc;
     }
 }
