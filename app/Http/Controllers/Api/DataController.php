@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\category;
 use App\Models\Checkup;
 use App\Models\Content;
 use App\Models\Customer;
@@ -58,14 +59,23 @@ class DataController extends Controller
     public function categoryCheckup(Request $request)
     {
         $user = Customer::where('phone', $request['phone'])->first();
+        $cat = category::where('id', $request['cat_id'])->first();
         $check = Checkup::where(['pasien_id' => $user->id, 'cat_id' => $request['cat_id']])->latest('datang')->first();
-        $layanan = $check->category;
+
+        $layanan = $cat->name;
         $nama = $user->name;
-        $datang = date('d-m-Y', strtotime($check->datang));
-        if ($check->kembali) {
+        if ($check) {
+            $datang = date('d-m-Y', strtotime($check->datang));
             $kembali = date('d-m-Y', strtotime($check->kembali));
         } else {
+            $datang = '-';
             $kembali = '-';
+        }
+        if ($cat->id == 5) {
+            $imun = $check->next_service;
+            $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali.', '.$imun;
+
+            return $resp;
         }
         $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali;
 
