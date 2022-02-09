@@ -72,6 +72,9 @@ class CheckupController extends Controller
     public function update(Request $request)
     {
         $pasien = Checkup::where('id', $request->id)->first();
+        if ($request->next) {
+            $pasien->next_service = $request->next;
+        }
         $pasien->kembali = $request->kembali;
         $pasien->save();
         Toastr::success('Data kembali berhasil ditambahkan');

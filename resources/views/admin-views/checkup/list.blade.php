@@ -53,6 +53,7 @@
                                 <th scope="col" class="sort" data-sort="category">Layanan</th>
                                 <th scope="col" class="sort" data-sort="status">Telepon / HP</th>
                                 <th scope="col" class="sort" data-sort="status">Datang</th>
+                                <th scope="col" class="sort" data-sort="status">Imunisasi selanjutnya</th>
                                 <th scope="col" class="sort" data-sort="status">Kembali</th>
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
                             </tr>
@@ -85,6 +86,19 @@
                                                         disabled></input>
                                                 </div>
                                             </div>
+                                            @if ($ad->cat_id == 5)
+                                            <div class="form-group mb-3 pasien-form">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span
+                                                            class="input-group-text w-100 bg-grey text-white">Nama</span>
+                                                    </div>
+                                                    <input class="pl-2 form-control" id="next{{ $ad->id }}" name="next" type="text"
+                                                        placeholder="Imunisasi selanjutnya"
+                                                        ></input>
+                                                </div>
+                                            </div>
+                                            @endif
                                             <div class="form-group mb-3 pasien-form">
                                                 <div class="input-group input-group-merge input-group-alternative">
                                                     <div class="input-group-prepend">
@@ -121,6 +135,11 @@
                                 <td class="budget text-center capitalize">
                                     <span class="status badge badge-success">{{ date('d M Y',strtotime($ad->datang))
                                         }}</span>
+                                </td>
+                                <td class="budget text-center capitalize">
+                                @if (isset($ad->next_service))
+                                <span class="status">{{ $ad->next_service }}</span>
+                                @endif
                                 </td>
                                 <td class="budget text-center capitalize">
                                     @if ($ad->kembali == null)
@@ -180,6 +199,7 @@
         function update(val){
         var id = val
         var back = $('#back' + val).val()
+        var next = $('#next' + val).val()
         // console.log(id, back)
         $.ajaxSetup({
             headers: {
@@ -189,7 +209,7 @@
         $.ajax({
             url: "{{route('admin.checkup.update')}}",
             method: 'POST',
-            data: {id: id, kembali: back},
+            data: {id: id, kembali: back, next: next},
             success: function () {
                 toastr.success('Tanggal kembali berhasil diubah');
                 location.reload();

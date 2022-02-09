@@ -23,6 +23,12 @@
                         <span class="field-title">Tanggal pemeriksaan</span><br>
                         <h5 class="field-content">{{ date('d-m-Y', strtotime($d->datang))}}</h5>
                     </div>
+                    @if (isset($d->next_service))
+                    <div class="field-group">
+                        <span class="field-title">Imunisasi selanjutnya</span><br>
+                        <h5 class="field-content">{{ $d->next_service }}</h5>
+                    </div>
+                    @endif
                     @if (isset($d->kembali))
                     <div class="field-group">
                         <span class="field-title">Pemeriksaan kembali</span><br>
