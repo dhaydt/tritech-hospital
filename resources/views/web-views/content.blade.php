@@ -1,8 +1,30 @@
 @extends('layouts.front-end.app')
+<style>
+    .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	right:20px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
 
+.my-float{
+	margin-top:22px;
+}
+</style>
 @section('content')
 @if (Route::is('content2'))
-    <div class="mt--5"></div>
+<div class="mt--5"></div>
+<div class="back-menu">
+    <a href="{{ route('home2') }}" class="float">
+        <i class="fas fa-bars my-float"></i>
+    </a>
+</div>
 @endif
 <div class="con-content pt-0 my-6 pb-2">
     <div class="row">
