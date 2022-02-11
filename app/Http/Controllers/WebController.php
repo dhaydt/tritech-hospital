@@ -105,7 +105,7 @@ class WebController extends Controller
         // dd($konten, $id);
         session()->put('page-title', $check->name);
 
-        return view('web-views.checkup', compact('konten'));
+        return view('web-views.checkup2', compact('konten'));
     }
 
     public function checkout_complete(Request $request)
