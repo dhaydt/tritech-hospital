@@ -13,9 +13,10 @@ class DataController extends Controller
 {
     public function updateProfile(Request $request)
     {
-        $user = Customer::where('phone', $request['no_hp'])->first();
+        $user = Customer::where('phone', $request['no_hp_lama'])->first();
         $user->name = $request['nama'];
         $user->address = $request['alamat'];
+        $user->phone = $request['no_hp'];
         $user->password = bcrypt($request['password']);
         $user->save();
 
