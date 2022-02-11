@@ -39,17 +39,94 @@
     </div>
 </div>
 @endsection
+
 @push('script')
-    {{-- <script>
-        $(document).ready(function() {
-        var maxHeight = 0;
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    function sendNotif(){
+        console.log('work');
+        $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-        $('.menu-card').each(function(){
-        var thisH = $(this).height();
-        if (thisH > maxHeight) { maxHeight = thisH; }
-        });
+                $.ajax({
+                    url: '{{ route("getKembali") }}',
+                    type: 'GET',
 
-        $('.menu-card').height(maxHeight);
-        })
-    </script> --}}
+                    // dataType: 'JSON',
+                    success: function (response) {
+                        console.log('notif sended successfully.');
+                    },
+                    error: function (err) {
+                        console.log('User Chat Token Error'+ err);
+                    },
+                });
+    }
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyDNHG694SRE2nSW7Dc276dctM2dyPi_w2w",
+        authDomain: "fcm-demo-60928.firebaseapp.com",
+        projectId: "fcm-demo-60928",
+        storageBucket: "fcm-demo-60928.appspot.com",
+        messagingSenderId: "94836916481",
+        appId: "1:94836916481:web:4f3e73638d139cae1c9b00"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+
+    function initFirebaseMessagingRegistration() {
+            messaging
+            .requestPermission()
+            .then(function () {
+                return messaging.getToken()
+            })
+            .then(function(token) {
+                console.log(token);
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: '{{ route("save-token") }}',
+                    type: 'POST',
+                    data: {
+                        token: token
+                    },
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.log('Token saved successfully.');
+                    },
+                    error: function (err) {
+                        console.log('User Chat Token Error'+ err);
+                    },
+                });
+
+            }).catch(function (err) {
+                console.log('User Chat Token Error'+ err);
+            });
+     }
+
+    messaging.onMessage(function(payload) {
+        const noteTitle = payload.notification.title;
+        const noteOptions = {
+            body: payload.notification.body,
+            icon: payload.notification.icon,
+        };
+        new Notification(noteTitle, noteOptions);
+    });
+
+    $(document).ready(function(){
+        initFirebaseMessagingRegistration();
+        sendNotif()
+    })
+
+</script>
 @endpush
+
