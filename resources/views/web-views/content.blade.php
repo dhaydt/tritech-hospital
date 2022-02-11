@@ -21,7 +21,7 @@
 @if (Route::is('content2'))
 <div class="mt--5"></div>
 <div class="back-menu">
-    <a href="{{ route('home2') }}" class="float">
+    <a href="{{ url()->previous() }}" class="float">
         <i class="fas fa-bars my-float"></i>
     </a>
 </div>
