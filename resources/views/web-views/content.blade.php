@@ -2,6 +2,7 @@
 <style>
     .float{
 	position:fixed;
+    z-index: 20;
 	width:60px;
 	height:60px;
 	bottom:20px;
