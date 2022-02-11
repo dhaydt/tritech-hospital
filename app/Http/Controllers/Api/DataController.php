@@ -11,6 +11,18 @@ use Illuminate\Http\Request;
 
 class DataController extends Controller
 {
+    public function updateProfile(Request $request)
+    {
+        $user = Customer::where('phone', $request['no_hp'])->first();
+        $user->name = $request['nama'];
+        $user->address = $request['alamat'];
+        $user->password = bcrypt($request['password']);
+        $user->save();
+
+        return 'sukses update data';
+        // dd($user);
+    }
+
     public function checkup(Request $request)
     {
         // dd($request);

@@ -32,7 +32,8 @@ Route::get('/storage-link', function () {
 });
 
 Auth::routes();
-// API
+
+// API Manual
 Route::get('/pasien/home', [WebController::class, 'home2'])->name('home2');
 Route::get('/content2/{id}', [WebController::class, 'content2'])->name('content2');
 Route::get('/pemeriksaan/{id}', [WebController::class, 'checkupSingleApi'])->name('checkup2');

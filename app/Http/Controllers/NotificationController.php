@@ -91,95 +91,101 @@ class NotificationController extends Controller
         return redirect()->route('notifWa', ['id[]' => $id]);
     }
 
-    public function notifWa(Request $request)
+    public function sendWa($id)
     {
-        $check = Checkup::get();
-        // $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
-        $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
-        foreach ($check as $c) {
-            $checkupId = [];
-            if ($c->kembali == $dateMin) {
-                array_push($checkupId, $c->id);
-            }
-        }
-
-        // $checkupId = $request->id;
-        if (count($checkupId) > 0) {
-            foreach ($checkupId as $c) {
-                $checkup = Checkup::where('id', $c)->first();
-                $cat = $checkup->cat_id;
-                $receiver = Customer::where('id', $checkup->pasien_id)->first()->phone;
-                if ($cat == 1) {
-                    $otp = 'Salam sehat bunda❤️
+        dd($id);
+        foreach ($id as $c) {
+            $checkup = Checkup::where('id', $c)->first();
+            $cat = $checkup->cat_id;
+            $receiver = Customer::where('id', $checkup->pasien_id)->first()->phone;
+            if ($cat == 1) {
+                $otp = 'Salam sehat bunda❤️
 Bsok jadwal suntik KB ulang,
 Ingat selalu membawa kartu KB nya, bunda.
 Kami tunggu kehadirannya di praktek
 ——Bidan Ratna Dewi💐——';
-                }
-                if ($cat == 2) {
-                    $otp = 'Salam sehat bunda❤️
+            }
+            if ($cat == 2) {
+                $otp = 'Salam sehat bunda❤️
 Bsok saatnya melakukan pemeriksaan kehamilan
 Ingat selalu membawa buku pink (KIA) nya, bunda.
 Kami tunggu kehadirannya di praktek
 ——Bidan Ratna Dewi——';
-                }
-                if ($cat == 3) {
-                    $otp = 'Salam sehat bunda❤️
+            }
+            if ($cat == 3) {
+                $otp = 'Salam sehat bunda❤️
 Bsok saatnya melakukan pemeriksaan Persalinan
 Ingat selalu membawa buku pink (KIA) nya, bunda.
 Kami tunggu kehadirannya di praktek
 ——Bidan Ratna Dewi——';
-                }
-                if ($cat == 4) {
-                    $otp = 'Salam sehat bunda❤️
+            }
+            if ($cat == 4) {
+                $otp = 'Salam sehat bunda❤️
 Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby
 Ingat selalu membawa buku pink (KIA) nya, bunda.
 Kami tunggu kehadiran bunda & baby di praktek
 ——Bidan Ratna Dewi——';
-                }
-                if ($cat == 5) {
-                    $otp = 'Salam sehat bunda❤️
+            }
+            if ($cat == 5) {
+                $otp = 'Salam sehat bunda❤️
 Mengingatkan untuk bsok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib
 imunisasi BCG, dari pukul 08.00-11.00 wita
 DPT, polio dari jam 08.00-14.00 wita
 imun MR dan JE dari jam 08.00-14.00 wita
 imun IPV dari jam 08.00-14.00 wita
 ——Bidan Ratna Dewi——';
-                }
-                if ($cat == 6) {
-                    $otp = 'Waktunya berobat kesehatan reproduksi';
-                }
-                $response = 'error';
-                // if (isset($config) && $config['status'] == 1) {
-                $userkey = Config::get('zenziva.user_key');
-                $passkey = Config::get('zenziva.pass_key');
-                // $telepon = '+62'.(int) $receiver;
-                $telepon = '+62'.(int) $receiver;
-                // dd($telepon);
-                $message = $otp;
-                // $message = 'halo';
-                // $message = ['grosa' => str_split($otp)];
-                $url = 'https://gsm.zenziva.net/api/sendWA/';
-                // dd(json_encode($message));
-                $curlHandle = curl_init();
-                curl_setopt($curlHandle, CURLOPT_URL, $url);
-                curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-                curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
-                curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-                curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
-                curl_setopt($curlHandle, CURLOPT_POST, 1);
-                curl_setopt($curlHandle, CURLOPT_POSTFIELDS, [
-                    'userkey' => $userkey,
-                    'passkey' => $passkey,
-                    'nohp' => $telepon,
-                    'pesan' => $message,
-                ]);
-                $results = json_decode(curl_exec($curlHandle), true);
-                curl_close($curlHandle);
-                // }
-                // return $results;
             }
+            if ($cat == 6) {
+                $otp = 'Waktunya berobat kesehatan reproduksi';
+            }
+            $response = 'error';
+            // if (isset($config) && $config['status'] == 1) {
+            $userkey = Config::get('zenziva.user_key');
+            $passkey = Config::get('zenziva.pass_key');
+            // $telepon = '+62'.(int) $receiver;
+            $telepon = '+62'.(int) $receiver;
+            // dd($telepon);
+            $message = $otp;
+            // $message = 'halo';
+            // $message = ['grosa' => str_split($otp)];
+            $url = 'https://gsm.zenziva.net/api/sendWA/';
+            // dd(json_encode($message));
+            $curlHandle = curl_init();
+            curl_setopt($curlHandle, CURLOPT_URL, $url);
+            curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+            curl_setopt($curlHandle, CURLOPT_POST, 1);
+            curl_setopt($curlHandle, CURLOPT_POSTFIELDS, [
+                'userkey' => $userkey,
+                'passkey' => $passkey,
+                'nohp' => $telepon,
+                'pesan' => $message,
+            ]);
+            $results = json_decode(curl_exec($curlHandle), true);
+            curl_close($curlHandle);
+            // }
+            // return $results;
+        }
+    }
+
+    public function notifWa(Request $request)
+    {
+        $check = Checkup::get();
+        // $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+        $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+        $checkupId = [];
+        foreach ($check as $c) {
+            if ($c->kembali == $dateMin) {
+                array_push($checkupId, $c->id);
+            }
+        }
+
+        if (count($checkupId) > 0) {
+            // dd($checkupId);
+            // $this->notifWa();
         }
     }
 }
