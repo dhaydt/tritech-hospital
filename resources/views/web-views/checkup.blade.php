@@ -1,9 +1,13 @@
 @extends('layouts.front-end.app')
 
 @section('content')
+@if (Route::is('checkup2'))
+    <div class="mt--5"></div>
+@endif
 <div class="con-content pt-0 my-6 pb-2">
     <div class="row">
         <div class="col-12">
+            @if (!Route::is('checkup2'))
             @if (count($data) > 0)
             @foreach ($data as $d)
             <div class="card card-checkup mb-3">
@@ -69,6 +73,8 @@
                 </div>
             </div>
             @endif
+            @endif
+
             @if (count($konten) > 0)
             <div class="col-12">
                 <h4 class="section-title">

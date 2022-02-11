@@ -34,6 +34,7 @@ Auth::routes();
 
 Route::get('/pasien/home', [WebController::class, 'home2'])->name('home2');
 Route::get('/content2/{id}', [WebController::class, 'content2'])->name('content2');
+Route::get('/pemeriksaan/{id}', [WebController::class, 'checkupSingle'])->name('checkup2');
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/pasien/register', [RegisterController::class, 'index'])->name('customersReg');

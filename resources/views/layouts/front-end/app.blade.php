@@ -52,7 +52,7 @@
     <div class="main-content" id="main-content">
         <div class="row main-row mx-auto">
             <div class="col-12 p-0">
-                @if (!Route::is('home2') && !Route::is('content2') && !Route::is('home'))
+                @if (!Route::is('home2') && !Route::is('content2') && !Route::is('home') && !Route::is('checkup2'))
                 @include('layouts.front-end.partials._header2')
                 @endif
                 @if (Route::is('home'))
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    @if (!Route::is('home2') && !Route::is('content2'))
+    @if (!Route::is('home2') && !Route::is('content2') && !Route::is('checkup2'))
     @include('layouts.front-end.partials._footer')
     @endif
 
