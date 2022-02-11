@@ -78,7 +78,7 @@ class NotificationController extends Controller
     {
         $check = Checkup::get();
         // $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
-        $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+        $dateMin = Carbon::now()->format('Y-m-d');
         foreach ($check as $c) {
             $id = [];
             if ($c->kembali == $dateMin) {
@@ -93,8 +93,17 @@ class NotificationController extends Controller
 
     public function notifWa(Request $request)
     {
-        // $config = self::get_settings('twilio_sms');
-        $checkupId = $request->id;
+        $check = Checkup::get();
+        // $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+        $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+        foreach ($check as $c) {
+            $checkupId = [];
+            if ($c->kembali == $dateMin) {
+                array_push($checkupId, $c->id);
+            }
+        }
+
+        // $checkupId = $request->id;
         if (count($checkupId) > 0) {
             foreach ($checkupId as $c) {
                 $checkup = Checkup::where('id', $c)->first();
@@ -109,7 +118,7 @@ Kami tunggu kehadirannya di praktek
                 }
                 if ($cat == 2) {
                     $otp = 'Salam sehat bunda❤️
-Bsok saatnya melakukan pemeriksaan kehamilan🤰
+Bsok saatnya melakukan pemeriksaan kehamilan
 Ingat selalu membawa buku pink (KIA) nya, bunda.
 Kami tunggu kehadirannya di praktek
 ——Bidan Ratna Dewi——';
@@ -126,7 +135,7 @@ Kami tunggu kehadirannya di praktek
 Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby
 Ingat selalu membawa buku pink (KIA) nya, bunda.
 Kami tunggu kehadiran bunda & baby di praktek
-——Bidan Ratna Dewi💐——';
+——Bidan Ratna Dewi——';
                 }
                 if ($cat == 5) {
                     $otp = 'Salam sehat bunda❤️
@@ -135,7 +144,7 @@ imunisasi BCG, dari pukul 08.00-11.00 wita
 DPT, polio dari jam 08.00-14.00 wita
 imun MR dan JE dari jam 08.00-14.00 wita
 imun IPV dari jam 08.00-14.00 wita
-——Bidan Ratna Dewi💐——';
+——Bidan Ratna Dewi——';
                 }
                 if ($cat == 6) {
                     $otp = 'Waktunya berobat kesehatan reproduksi';

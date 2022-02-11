@@ -8,7 +8,7 @@
         "php": "^7.3|^8.0",
         "brian2694/laravel-toastr": "^5.56",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^2.7",
         "ladumor/laravel-pwa": "^0.0.2",
         "laravel-frontend-presets/argon": "^1.1",
