@@ -121,16 +121,16 @@ class NotificationController extends Controller
                     $msg = 'Salam sehat bunda, Bsok jadwal suntik KB ulang, Ingat selalu membawa kartu KB nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 2) {
-                    $msg = 'Salam sehat bunda Bsok saatnya melakukan pemeriksaan kehamilan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda, Bsok saatnya melakukan pemeriksaan kehamilan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 3) {
-                    $msg = 'Salam sehat bunda Bsok saatnya melakukan pemeriksaan Persalinan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda, Bsok saatnya melakukan pemeriksaan Persalinan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 4) {
-                    $msg = 'Salam sehat bunda Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadiran bunda & baby di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda, Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadiran bunda & baby di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 5) {
-                    $msg = 'Salam sehat bunda Mengingatkan untuk bsok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib imunisasi BCG, dari pukul 08.00-11.00 wita DPT, polio dari jam 08.00-14.00 wita imun MR dan JE dari jam 08.00-14.00 wita imun IPV dari jam 08.00-14.00 wita ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda, Mengingatkan untuk bsok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib imunisasi BCG, dari pukul 08.00-11.00 wita DPT, polio dari jam 08.00-14.00 wita imun MR dan JE dari jam 08.00-14.00 wita imun IPV dari jam 08.00-14.00 wita ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 6) {
                     $msg = 'Waktunya berobat kesehatan reproduksi'.$c;
