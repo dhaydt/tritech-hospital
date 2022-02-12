@@ -43,7 +43,7 @@ Route::post('/save-token', [NotificationController::class, 'saveToken'])->name('
 Route::post('/send-notif', [NotificationController::class, 'sendNotification'])->name('send.notification');
 Route::get('/getKembali', [NotificationController::class, 'getKembali'])->name('getKembali');
 Route::get('/notifWa', [NotificationController::class, 'notifWa'])->name('notifWa');
-// Route::get('/getDateWa', [NotificationController::class, 'getDateWa'])->name('getDateWa');
+Route::get('/getDateWa', [NotificationController::class, 'getDateWa'])->name('getDateWa');
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 Route::get('/pasien/register', [RegisterController::class, 'index'])->name('customersReg');
