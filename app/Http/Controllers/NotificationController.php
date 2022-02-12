@@ -161,7 +161,8 @@ imun IPV dari jam 08.00-14.00 wita
                 $userkey = 'nm3eok';
                 $passkey = 'cbmmaju2017';
                 $telepon = '+62'.(int) $receiver;
-                $message = $msg;
+                // $message = $msg;
+                $message = 'Waktunya berobat';
                 $url = 'https://gsm.zenziva.net/api/sendWA/';
                 $curlHandle = curl_init();
                 curl_setopt($curlHandle, CURLOPT_URL, $url);
