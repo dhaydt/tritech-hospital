@@ -113,44 +113,24 @@ class NotificationController extends Controller
                 $cat = $checkup->cat_id;
                 $receiver = Customer::where('id', $checkup->pasien_id)->first()->phone;
 
-                $msg = 'Waktunya pemeriksaan '.$checkup->category.' esok hari';
+                // $msg = 'Waktunya pemeriksaan '.$checkup->category.' esok hari';
+
+                $msg = 'Salam sehat bunda Besok saatnya melakukan pemeriksaan di praktek ——Bidan Ratna Dewi——';
 
                 if ($cat == 1) {
-                    $msg = 'Salam sehat bunda
-Bsok jadwal suntik KB ulang,
-Ingat selalu membawa kartu KB nya, bunda.
-Kami tunggu kehadirannya di praktek
-——Bidan Ratna Dewi💐——';
+                    $msg = 'Salam sehat bunda, Bsok jadwal suntik KB ulang, Ingat selalu membawa kartu KB nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 2) {
-                    $msg = 'Salam sehat bunda
-Bsok saatnya melakukan pemeriksaan kehamilan
-Ingat selalu membawa buku pink (KIA) nya, bunda.
-Kami tunggu kehadirannya di praktek
-——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda Bsok saatnya melakukan pemeriksaan kehamilan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 3) {
-                    $msg = 'Salam sehat bunda
-Bsok saatnya melakukan pemeriksaan Persalinan
-Ingat selalu membawa buku pink (KIA) nya, bunda.
-Kami tunggu kehadirannya di praktek
-——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda Bsok saatnya melakukan pemeriksaan Persalinan Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 4) {
-                    $msg = 'Salam sehat bunda
-Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby
-Ingat selalu membawa buku pink (KIA) nya, bunda.
-Kami tunggu kehadiran bunda & baby di praktek
-——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda Bsok jadwal kontrol nifas (pasca salin) dan kontrol baby Ingat selalu membawa buku pink (KIA) nya, bunda. Kami tunggu kehadiran bunda & baby di praktek ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 5) {
-                    $msg = 'Salam sehat bunda
-Mengingatkan untuk bsok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib
-imunisasi BCG, dari pukul 08.00-11.00 wita
-DPT, polio dari jam 08.00-14.00 wita
-imun MR dan JE dari jam 08.00-14.00 wita
-imun IPV dari jam 08.00-14.00 wita
-——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat bunda Mengingatkan untuk bsok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib imunisasi BCG, dari pukul 08.00-11.00 wita DPT, polio dari jam 08.00-14.00 wita imun MR dan JE dari jam 08.00-14.00 wita imun IPV dari jam 08.00-14.00 wita ——Bidan Ratna Dewi——';
                 }
                 if ($cat == 6) {
                     $msg = 'Waktunya berobat kesehatan reproduksi'.$c;
@@ -162,7 +142,7 @@ imun IPV dari jam 08.00-14.00 wita
                 $passkey = 'cbmmaju2017';
                 $telepon = '+62'.(int) $receiver;
                 // $message = $msg;
-                $message = 'Waktunya berobat';
+                $message = $msg;
                 $url = 'https://gsm.zenziva.net/api/sendWA/';
                 $curlHandle = curl_init();
                 curl_setopt($curlHandle, CURLOPT_URL, $url);
