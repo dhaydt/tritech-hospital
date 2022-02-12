@@ -15,11 +15,17 @@ class CheckupController extends Controller
 {
     public function index(Request $request)
     {
+        // dd($request);
         $pasien = Customer::get();
         $query_param = [];
         $start = $request['start-date'];
         $end = $request['end-date'];
         $search = $request['search'];
+        $cari = $request['cari'];
+
+        if ($request->has('cari')) {
+            $orders = Checkup::where('name', 'like', "%{$cari}%")->orWhere('phone', 'like', "%{$cari}%");
+        }
         if ($request->has('start-date')) {
             if ($start == $end) {
                 $orders = Checkup::where('datang', 'like', "%{$start}%");
@@ -39,7 +45,7 @@ class CheckupController extends Controller
         session()->put('title', 'Checkup List');
         $admin = $orders->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
 
-        return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien', 'cat'));
+        return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien', 'cat', 'cari'));
     }
 
     public function store(Request $request)
