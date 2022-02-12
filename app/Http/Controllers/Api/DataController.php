@@ -91,8 +91,12 @@ class DataController extends Controller
             $datang = '-';
             $kembali = '-';
         }
-        if ($cat->id == 5 && isset($check)) {
-            $imun = $check->next_service;
+        if ($cat->id == 5) {
+            if (!isset($check->next_service)) {
+                $imun = '-';
+            } else {
+                $imun = $check->next_service;
+            }
             $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali.', '.$imun;
 
             return $resp;
