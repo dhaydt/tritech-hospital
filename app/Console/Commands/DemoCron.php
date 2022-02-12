@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\NotificationController;
 use Illuminate\Console\Command;
 
 class DemoCron extends Command
@@ -40,6 +39,6 @@ class DemoCron extends Command
     {
         \Log::info('FCM sended!');
 
-        return NotificationController::getKembali();
+        return \App::call('App\Http\Controllers\NotificationController@getKembali');
     }
 }

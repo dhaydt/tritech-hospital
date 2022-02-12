@@ -21,9 +21,13 @@ class NotificationController extends Controller
         return response()->json(['token saved successfully.']);
     }
 
-    public function sendNotification(Request $request)
+    public function sendNotification($c)
     {
-        $firebaseToken = Customer::whereNotNull('device_token')->pluck('device_token')->all();
+        $user = Customer::where('id', $c->pasien_id)->pluck('device_token')->all();
+        $service = $c->cat_id;
+        // $firebaseToken = Customer::whereNotNull('device_token')->pluck('device_token')->first();
+        $firebaseToken = $user;
+        // dd($firebaseToken);
 
         $SERVER_API_KEY = 'AAAAFhS4gQE:APA91bGqQ7NDoEieUd6hRvRJagJ-nnxWBp7fuh7Z1Qmz8Z7O2NRTwG2hFj-BOf3-xpYATs7RLN5aSScaLUgND1ghyjEChXqdMQFsJNS-vvu_YvIZ-_Hiuwpv6FfSazM4kdKV36Glg0p7';
 
@@ -31,7 +35,7 @@ class NotificationController extends Controller
             'registration_ids' => $firebaseToken,
             'notification' => [
                 'title' => 'Bidan Ratna Dewi',
-                'body' => 'Sudah waktu nya berobat',
+                'body' => 'Sudah waktu nya berobat ('.$service.')',
                 'content_available' => true,
                 'priority' => 'high',
             ],
@@ -59,36 +63,31 @@ class NotificationController extends Controller
 
     public function getKembali()
     {
-        $user = auth('customer')->id();
         $date = Carbon::now()->format('Y-m-d');
-        $check = Checkup::where(['pasien_id' => $user, 'kembali' => $date])->get();
+        $check = Checkup::get();
         // if($)
         foreach ($check as $c) {
             // dd($c->kembali, $date);
             if ($c->kembali == $date) {
-                return \App::call('App\Http\Controllers\NotificationController@sendNotification');
+                return $this->sendNotification($c);
             }
         }
 
         return 'no';
     }
 
-    public function getDateWa()
-    {
-        $check = Checkup::get();
-        // $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
-        $dateMin = Carbon::now()->format('Y-m-d');
-        foreach ($check as $c) {
-            $id = [];
-            if ($c->kembali == $dateMin) {
-                array_push($id, $c->id);
-            }
-        }
-
-        // dd($id);
-
-        return redirect()->route('notifWa', ['id[]' => $id]);
-    }
+    // public function getDateWa()
+    // {
+    //     $check = Checkup::get();
+    //     $dateMin = Carbon::now()->addDay(1)->format('Y-m-d');
+    //     foreach ($check as $c) {
+    //         $id = [];
+    //         if ($c->kembali == $dateMin) {
+    //             array_push($id, $c->id);
+    //         }
+    //     }
+    //     return redirect()->route('notifWa', ['id[]' => $id]);
+    // }
 
     public function notifWa(Request $request)
     {

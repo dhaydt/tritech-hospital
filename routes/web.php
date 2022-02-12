@@ -41,7 +41,7 @@ Route::get('/pemeriksaan/{id}', [WebController::class, 'checkupSingleApi'])->nam
 // NOTIF
 Route::post('/save-token', [NotificationController::class, 'saveToken'])->name('save-token');
 Route::post('/send-notif', [NotificationController::class, 'sendNotification'])->name('send.notification');
-Route::get('/getDate', [NotificationController::class, 'getKembali'])->name('getKembali');
+Route::get('/getKembali', [NotificationController::class, 'getKembali'])->name('getKembali');
 Route::get('/notifWa', [NotificationController::class, 'notifWa'])->name('notifWa');
 Route::get('/getDateWa', [NotificationController::class, 'getDateWa'])->name('getDateWa');
 
