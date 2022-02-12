@@ -48,7 +48,7 @@
                                 <th scope="col" class="sort" data-sort="name">ID</th>
                                 <th scope="col" class="sort" data-sort="budget">Name</th>
                                 <th scope="col" class="sort" data-sort="status">Phone</th>
-                                <th scope="col" class="sort" data-sort="status">Address</th>
+                                {{-- <th scope="col" class="sort" data-sort="status">Address</th> --}}
                                 <th scope="col" class="sort" data-sort="completion">Action</th>
                                 <th scope="col"></th>
                             </tr>
@@ -136,9 +136,9 @@
                                 <td class="text-center">
                                     <span class="status">{{ $ad['phone'] }}</span>
                                 </td>
-                                <td class="budget text-center capitalize">
+                                {{-- <td class="budget text-center capitalize">
                                     {{ $ad['address'] }}
-                                </td>
+                                </td> --}}
                                 <td>
                                     <div class="d-flex align-items-center justify-content-evenly action-col">
                                         <a href="javascript:" class="viewUser p-1" data-bs-toggle="modal"

@@ -12,7 +12,7 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-lg-6 col-5 text-right d-flex">
+                <div class="col-lg-6 col-5 text-right d-flex" style="height: 48px;">
                     <form action="{{ url()->current() }}" method="get" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
                         @csrf
                         <div class="form-group mb-0">

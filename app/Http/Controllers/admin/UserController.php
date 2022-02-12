@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Checkup;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -150,6 +151,10 @@ class UserController extends Controller
     {
         $user = Customer::where('id', $id)->first();
         $user->delete();
+        $check = Checkup::where('pasien_id', $id)->get();
+        foreach ($check as $c) {
+            $c->delete();
+        }
         Toastr::success('Pasien sukses dihapus');
 
         return redirect()->back();

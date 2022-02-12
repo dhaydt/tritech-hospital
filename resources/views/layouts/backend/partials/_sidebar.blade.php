@@ -140,8 +140,7 @@
                  </li>
              </ul>
 
-            <!-- Order Section -->
-            <h6 class="navbar-heading text-muted">Config Section</h6>
+            {{-- <h6 class="navbar-heading text-muted">Config Section</h6>
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
@@ -154,7 +153,7 @@
                         <i class="fas fa-images text-orange"></i> {{ __('Banner Config') }}
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
             {{-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button"
