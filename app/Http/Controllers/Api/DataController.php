@@ -36,7 +36,7 @@ class DataController extends Controller
         }
         $check = Checkup::with('customer')->where('pasien_id', $user->id)->orderby('created_at', 'DESC')->first();
         if (!$check) {
-            $respon = 'belum ada data pemeriksaan';
+            $respon = '-';
 
             return response()->json($respon, 200);
         }
@@ -71,7 +71,11 @@ class DataController extends Controller
 
     public function categoryCheckup(Request $request)
     {
+        // dd($request);
         $user = Customer::where('phone', $request['phone'])->first();
+        if (!isset($user)) {
+            return 'pasien tidak ditemukan';
+        }
         $cat = category::where('id', $request['cat_id'])->first();
         $check = Checkup::where(['pasien_id' => $user->id, 'cat_id' => $request['cat_id']])->latest('datang')->first();
 
@@ -80,11 +84,14 @@ class DataController extends Controller
         if ($check) {
             $datang = date('d-m-Y', strtotime($check->datang));
             $kembali = date('d-m-Y', strtotime($check->kembali));
+            if (!isset($check->kembali)) {
+                $kembali = '-';
+            }
         } else {
             $datang = '-';
             $kembali = '-';
         }
-        if ($cat->id == 5) {
+        if ($cat->id == 5 && isset($check)) {
             $imun = $check->next_service;
             $resp = $layanan.', '.$nama.', '.$datang.', '.$kembali.', '.$imun;
 
