@@ -23,9 +23,6 @@ class CheckupController extends Controller
         $search = $request['search'];
         $cari = $request['cari'];
 
-        if ($request->has('cari')) {
-            $orders = Checkup::where('name', 'like', "%{$cari}%")->orWhere('phone', 'like', "%{$cari}%");
-        }
         if ($request->has('start-date')) {
             if ($start == $end) {
                 $orders = Checkup::where('datang', 'like', "%{$start}%");
@@ -39,6 +36,12 @@ class CheckupController extends Controller
             // return view('admin-views.checkup.list', compact('admin', 'start', 'end', 'pasien'));
         } else {
             $orders = Checkup::with(['customer']);
+        }
+
+        if ($request->has('cari')) {
+            $orders = Checkup::with('customer')->whereHas('customer', function ($q) use ($cari) {
+                $q->where('name', 'like', "%{$cari}%")->orWhere('phone', 'like', "%{$cari}%");
+            });
         }
         $cat = category::get();
 
