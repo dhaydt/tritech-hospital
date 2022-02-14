@@ -61,11 +61,17 @@ class WebController extends Controller
         }
         $id = auth('customer')->user()->id;
         $data = Checkup::with('customer')->latest('created_at')->where('pasien_id', $id)->get();
+        $kb = Checkup::where(['pasien_id' => $id, 'cat_id' => 1])->get();
+        $hamil = Checkup::where(['pasien_id' => $id, 'cat_id' => 2])->get();
+        $lahir = Checkup::where(['pasien_id' => $id, 'cat_id' => 3])->get();
+        $imun = Checkup::where(['pasien_id' => $id, 'cat_id' => 5])->get();
+        $nifas = Checkup::where(['pasien_id' => $id, 'cat_id' => 4])->get();
+        $repro = Checkup::where(['pasien_id' => $id, 'cat_id' => 6])->get();
         // dd($data);
         session()->put('page-title', 'Pemeriksaan');
         $konten = [];
 
-        return view('web-views.checkup', compact('data', 'konten'));
+        return view('web-views.checkup', compact('data', 'konten', 'kb', 'imun', 'hamil', 'lahir', 'nifas', 'repro'));
     }
 
     public function checkupSingle($id)
