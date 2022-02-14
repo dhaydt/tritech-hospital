@@ -5,19 +5,27 @@
     <div class="row">
         @if (!Route::is('home2'))
         <div class="col-12 mb-3">
-            <div class="row px-2">
-                @foreach ($cat as $c)
-                <div class="col-4 px-2">
-                    <div class="card menu-card mb-3">
-                        <a href="{{ route('checkup-cat', ['id' => $c->id]) }}" class="img-menu">
-                            <img src="{{ asset('storage/category').'/'.$c['image'] }}" class="card-img-top" alt="menu-img">
-                        </a>
-                        <div class="menu-cate">
-                            <label class="menu-title mb-0">{{ $c->name }}</label>
+            <div class="card card-home">
+                    <div class="col-12 text-start px-0 pb-2">
+                        <span class="title-welcome text-dark d-block">Hai,</span>
+                        <span class="title-name text-dark d-block mb-2">{{ auth('customer')->user()->name }}</span>
+                        <span class="title-menu-main">Pilih layanan</span>
+                    </div>
+                <div class="row px-0">
+                    @foreach ($cat as $c)
+                    <div class="col-4 px-1">
+                        <div class="card menu-card mb-3">
+                            <a href="{{ route('checkup-cat', ['id' => $c->id]) }}" class="img-menu">
+                                <img src="{{ asset('storage/category').'/'.$c['image'] }}" class="card-img-top"
+                                    alt="menu-img">
+                            </a>
+                            <div class="menu-cate">
+                                <label class="menu-title mb-0">{{ $c->name }}</label>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
         @endif
@@ -129,4 +137,3 @@
 
 </script>
 @endpush
-

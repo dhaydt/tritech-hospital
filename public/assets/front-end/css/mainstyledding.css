@@ -39,6 +39,11 @@ body .main-content {
     margin-top: 140px;
 }
 /* Header */
+.nav-home  {
+    height: 220px;
+    border-radius: 0 0 50px 50px;
+    overflow: hidden;
+}
 
 .nav-mobile {
     position: fixed !important;
@@ -63,20 +68,24 @@ body .main-content {
 }
 
 .title-welcome {
-    font-size: 14px;
-    color: #000;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
     line-height: 2;
+    text-transform: capitalize;
 }
 
 .title-app{
-    color: #096514;
+    color: #fff;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .title-name{
-    color: #000;
+    color: #fff;
     font-size: 20px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .page-title h2 {
@@ -112,6 +121,16 @@ footer {
 }
 
 /* home */
+.card.card-home {
+    z-index: 10;
+    border-radius: 30px;
+    padding: 5px 15px;
+}
+.title-menu-main {
+    text-transform: capitalize;
+    color: #000;
+    font-weight: 600;
+}
 .card.blog-card {
     border-radius: 10px;
 }
@@ -139,7 +158,7 @@ footer {
 }
 
 .img-menu{
-    height: 120px;
+    height: 105px;
 }
 .img-menu img {
     height: 100%;
