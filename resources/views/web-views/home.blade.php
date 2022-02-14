@@ -21,7 +21,7 @@
             </div>
         </div>
         @endif
-        <div class="col-12">
+        {{-- <div class="col-12">
             <h4 class="section-title">
                 Edukasi bagi anda
             </h4>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection
