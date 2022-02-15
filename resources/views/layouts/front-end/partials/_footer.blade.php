@@ -4,7 +4,7 @@
             <div class="col-12 p-0">
                 <div class="navbar p-0">
                     <div class="navbar-nav mx-auto d-flex flex-row justify-content-between w-100 px-4">
-                        <li class="nav-item {{Request::url('/')?'active':''}}">
+                        <li class="nav-item {{Request::is('home')?'active':''}}">
                             <a class="nav-link nav-footer nav-link-icon d-flex flex-column align-items-center"
                                 href="{{ route('home') }}">
                                 <i class="fas fa-home mb-1"></i>
