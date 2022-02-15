@@ -1,26 +1,26 @@
 @extends('layouts.front-end.app')
 
 @section('content')
-<div class="container-fluid px-3 my-6">
+<div class="container-fluid px-3 my--7">
     <div class="row">
-        <div class="col-12">
-            <form class="" autocomplete="off" action="{{route('profile.user-update')}}" method="post"
-                enctype="multipart/form-data">
+        <form class="" autocomplete="off" action="{{route('profile.user-update')}}" method="post"
+            enctype="multipart/form-data">
+            <div class="col-12" style="z-index: 11">
                 @csrf
                 <div class="row">
-                    <div class="col-12 text-center d-flex flex-column align-items-center">
+                    <div style="z-index: 2" class="col-12 text-center d-flex flex-column align-items-center">
                         <div class="avatar avatar-profile">
                             <img id="blah" onerror="this.src='{{asset('assets/front-end/img/image-place-holder.png')}}'"
                                 src="{{ asset('storage/profile').'/'.$customer->image }}" alt="">
                         </div>
                         <label for="files" style="cursor: pointer; color:{{$web_config['primary_color']}};"
                             class="spandHeadO">
-                            Ganti foto profil
+                            <small>Ganti foto profil</small>
                         </label>
                         <input id="files" name="image" style="visibility:hidden;" type="file">
                     </div>
                 </div>
-                <div class="card card-checkup mt--3 mb-4">
+                <div class="card card-checkup edit-profile mt--8 pt-6">
                     <div class="card-body p-2">
                         <div class="form-group mb-2">
                             <label class="field-title">Nama Lengkap</label><br>
@@ -61,14 +61,14 @@
                             <div id='message'></div>
                         </div>
 
-                        <div class="nav-profiile col-12 my-3">
-                            <button type="submit" class="btn btn-primary float-right">Simpan Data
-                            </button>
-                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="nav-profiile col-12 my-3 text-center px-4">
+                <button type="submit" class="mb-6 btn btn-success w-100">Edit
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

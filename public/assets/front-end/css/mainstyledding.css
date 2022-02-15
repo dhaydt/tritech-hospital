@@ -45,6 +45,16 @@ body .main-content {
     overflow: hidden;
 }
 
+.config-header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.config-header .fas {
+    color: #1c6d26;
+}
+
 .nav-mobile {
     position: fixed !important;
     top: 0;
@@ -106,7 +116,7 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 3;
+    z-index: 11;
     right: 0;
     background-color: var(--secondary-color);
 }
@@ -323,4 +333,8 @@ h3.field-content {
 /* edit profile */
 .form-control.edit-profiles{
     height: 35px;
+}
+
+.card-checkup.edit-profile{
+    border-radius: 25px;
 }

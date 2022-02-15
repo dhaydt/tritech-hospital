@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container-fluid px-3 my--7">
-    <div class="set-div">
+    {{-- <div class="set-div">
         <a href="{{ route('profile.edit') }}"><i class="fas fa-cog mr-2"></i></a>
         <a href="{{ route('customersLogout') }}"><i class="fas fa-door-open"></i></a>
-    </div>
+    </div> --}}
     <div class="row">
         <div class="col-12" style="z-index: 10">
             <div class="row">

@@ -19,7 +19,7 @@
 </nav>
 @endif
 
-@if (Route::is('profile.view'))
+@if (Route::is('profile.view') || Route::is('profile.edit'))
 <nav class="navbar nav-home p-2 nav-mobile navbar-horizontal navbar-expand-md navbar-dark" style="height: 120px; background-color: #bffcc6">
     <div class="container-fluid mx-auto h-100 justify-content-center">
         <div class="row w-100 h-100">
@@ -32,6 +32,11 @@
                 </div>
             </div>
         </div>
+        @if (Route::is('profile.view'))
+        <div class="config-header">
+            <a href="{{ route('profile.edit') }}"><i class="fas fa-cog mr-2"></i></a>
+        </div>
+        @endif
     </div>
 </nav>
 @endif
