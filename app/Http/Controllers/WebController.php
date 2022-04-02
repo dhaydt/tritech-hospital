@@ -87,7 +87,7 @@ class WebController extends Controller
         // dd($konten, $id);
         session()->put('page-title', $check->name);
 
-        return view('web-views.checkup', compact('data', 'konten'));
+        return view('web-views.checkup2', compact('data', 'konten'));
     }
 
     public function checkupSingleApi($id)
