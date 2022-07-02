@@ -138,12 +138,12 @@ class NotificationController extends Controller
 
                 // var_dump($msg);
 
-                $userkey = 'nm3eok';
-                $passkey = 'cbmmaju2017';
+                $userkey = 'd838134a05f6';
+                $passkey = 'f52ce10b8a0a36be168524ab';
                 $telepon = '+62'.(int) $receiver;
                 // $message = $msg;
                 $message = $msg;
-                $url = 'https://gsm.zenziva.net/api/sendWA/';
+                $url = 'https://console.zenziva.net/wareguler/api/sendWA/';
                 $curlHandle = curl_init();
                 curl_setopt($curlHandle, CURLOPT_URL, $url);
                 curl_setopt($curlHandle, CURLOPT_HEADER, 0);
@@ -155,8 +155,8 @@ class NotificationController extends Controller
                 curl_setopt($curlHandle, CURLOPT_POSTFIELDS, [
                     'userkey' => $userkey,
                     'passkey' => $passkey,
-                    'nohp' => $telepon,
-                    'pesan' => $message,
+                    'to' => $telepon,
+                    'message' => $message,
                 ]);
                 $results = json_decode(curl_exec($curlHandle), true);
                 curl_close($curlHandle);
