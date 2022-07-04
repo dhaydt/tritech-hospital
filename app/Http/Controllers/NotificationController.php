@@ -115,25 +115,35 @@ class NotificationController extends Controller
 
                 // $msg = 'Waktunya pemeriksaan '.$checkup->category.' esok hari';
 
-                $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan di praktek ——Bidan Ratna Dewi——';
+                $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan di praktek ——Bidan Ratna Dewi——
+
+Info lebih lanjut Hub: +6282247828037';
 
                 if ($cat == 1) {
-                    $msg = 'Salam sehat Bunda, Besok jadwal suntik KB ulang, Ingat selalu membawa kartu KB nya, Bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Besok jadwal suntik KB ulang, Ingat selalu membawa kartu KB nya, Bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——
+
+Info lebih lanjut Hub: +6282247828037';
                 }
                 if ($cat == 2) {
-                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kehamilan Ingat selalu membawa buku pink (KIA) nya, Bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kehamilan Ingat selalu membawa buku pink (KIA) nya, Bunda. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——
+
+Info lebih lanjut Hub: +6282247828037';
                 }
                 if ($cat == 3) {
-                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kembali untuk persiapan persalinan. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kembali untuk persiapan persalinan. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——
+Info lebih lanjut Hub: +6282247828037';
                 }
                 if ($cat == 4) {
-                    $msg = 'Salam sehat Bunda, Besok jadwal kontrol nifas (pasca salin) dan kontrol baby Ingat selalu membawa buku pink (KIA) nya, Bunda. Kami tunggu kehadiran Bunda & baby di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Besok jadwal kontrol nifas (pasca salin) dan kontrol baby Ingat selalu membawa buku pink (KIA) nya, Bunda. Kami tunggu kehadiran Bunda & baby di praktek ——Bidan Ratna Dewi——
+Info lebih lanjut Hub: +6282247828037';
                 }
                 if ($cat == 5) {
-                    $msg = 'Salam sehat Bunda, Mengingatkan untuk Besok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib imunisasi BCG, dari pukul 08.00-11.00 wita DPT, polio dari jam 08.00-14.00 wita imun MR dan JE dari jam 08.00-14.00 wita imun IPV dari jam 08.00-14.00 wita ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Mengingatkan untuk Besok hari MINGGU untuk mengajak putra putri nya untuk mendapatkan imunisasi wajib imunisasi BCG, dari pukul 08.00-11.00 wita DPT, polio dari jam 08.00-14.00 wita imun MR dan JE dari jam 08.00-14.00 wita imun IPV dari jam 08.00-14.00 wita ——Bidan Ratna Dewi——
+Info lebih lanjut Hub: +6282247828037';
                 }
                 if ($cat == 6) {
-                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kesehatan Reproduksi. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——';
+                    $msg = 'Salam sehat Bunda, Besok saatnya melakukan pemeriksaan kesehatan Reproduksi. Kami tunggu kehadirannya di praktek ——Bidan Ratna Dewi——
+Info lebih lanjut Hub: +6282247828037';
                 }
 
                 // var_dump($msg);
