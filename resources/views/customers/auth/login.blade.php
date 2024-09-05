@@ -15,7 +15,7 @@
 
     <title>@yield('title')</title>
     <!-- Favicon -->
-    {{-- <link href="{{ asset('storage/company/'.($web_config['fav_icon']->value ?? '')) }}" rel="icon" type="image/png"> --}}
+    <link href="{{ asset('storage/company/'.$web_config['fav_icon']->value) }}" rel="icon" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="logo-session mt-4">
                         <div class="logo-avatar avatar">
-                            {{-- <img src="{{ asset('storage/company').'/'.$web_config['web_logo']->value }}" alt=""> --}}
+                            <img src="{{ asset('storage/company').'/'.$web_config['web_logo']->value }}" alt="">
                         </div>
                     </div>
                     <div class="card-body px-lg-5">
