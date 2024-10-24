@@ -38,6 +38,7 @@
     .pasien-dialog {
         margin-top: 30vh;
     }
+
 </style>
 <div class="container-fluid mt--8">
 
@@ -70,7 +71,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title capitalize" id="staticBackdropLabel">Update {{
-                                                $ad->customer->name }}</h4>
+                                                $ad->customer->name ?? 'Data Pasien Terhapus' }}</h4>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -93,9 +94,8 @@
                                                         <span
                                                             class="input-group-text w-100 bg-grey text-white">Nama</span>
                                                     </div>
-                                                    <input class="pl-2 form-control" id="next{{ $ad->id }}" name="next" type="text"
-                                                        placeholder="Imunisasi selanjutnya"
-                                                        ></input>
+                                                    <input class="pl-2 form-control" id="next{{ $ad->id }}" name="next"
+                                                        type="text" placeholder="Imunisasi selanjutnya"></input>
                                                 </div>
                                             </div>
                                             @endif
@@ -105,8 +105,8 @@
                                                         <span
                                                             class="input-group-text w-100 bg-grey text-white">Kembali</span>
                                                     </div>
-                                                    <input class="pl-2 form-control" id="back{{ $ad->id }}" name="kembali"
-                                                        type="date"
+                                                    <input class="pl-2 form-control" id="back{{ $ad->id }}"
+                                                        name="kembali" type="date"
                                                         value="{{ date('d M Y',strtotime($ad->kembali)) }}"></input>
                                                 </div>
                                             </div>
@@ -124,22 +124,22 @@
                             <tr>
                                 <td class="text-center">{{ $no++ }}</td>
                                 <td class="budget text-center capitalize">
-                                    <span class="status">{{ $ad->customer->name }}</span>
+                                    <span class="status">{{ $ad->customer->name ?? 'Data Pasien Terhapus' }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
                                     <span class="status">{{ $ad->category }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
-                                    <span class="status">{{ $ad->customer->phone }}</span>
+                                    <span class="status">{{ $ad->customer->phone ?? 'Data Pasien Terhapus' }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
                                     <span class="status badge badge-success">{{ date('d M Y',strtotime($ad->datang))
                                         }}</span>
                                 </td>
                                 <td class="budget text-center capitalize">
-                                @if (isset($ad->next_service))
-                                <span class="status">{{ $ad->next_service }}</span>
-                                @endif
+                                    @if (isset($ad->next_service))
+                                    <span class="status">{{ $ad->next_service }}</span>
+                                    @endif
                                 </td>
                                 <td class="budget text-center capitalize">
                                     @if ($ad->kembali == null)
@@ -160,7 +160,8 @@
                                             data-bs-target="#staticBackdrop-{{ $ad->id }}">
                                             <i class="far fa-edit text-success"></i>
                                         </a>
-                                        <a href="{{ route('admin.checkup.delete', ['id' =>  $ad->id ]) }}" class="viewUser btn p-1">
+                                        <a href="{{ route('admin.checkup.delete', ['id' =>  $ad->id ]) }}"
+                                            class="viewUser btn p-1">
                                             <i class="fas fa-trash text-danger"></i>
                                         </a>
                                     </div>
